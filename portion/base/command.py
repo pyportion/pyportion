@@ -5,7 +5,7 @@ from portion.core import Logger
 
 
 class CommandBase(ABC):
-    def __init__(self, logger: Logger) -> None:
+    def __init__(self, logger: Logger, **kwargs: dict) -> None:
         self.logger = logger
 
     @abstractmethod
