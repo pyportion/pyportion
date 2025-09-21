@@ -1,4 +1,7 @@
 import argparse
+from argparse import ArgumentParser
+from argparse import _SubParsersAction
+from argparse import Namespace
 
 
 class Parser:
@@ -17,41 +20,28 @@ class Parser:
                               help="Verbose Logging",
                               action="store_true")
 
-    def _create_arguments(self,
-                          parser: argparse._SubParsersAction
-                          ) -> argparse.ArgumentParser:
-        create = parser.add_parser("create", help="Create a project")
-        return create
+    def _new_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
+        new: ArgumentParser = parser.add_parser("new",
+                                                help="Create a new project")
+        new.add_argument("name")
+        new.add_argument("-t", "--template", required=True)
+        return new
 
-    def _add_arguments(self,
-                       parser: argparse._SubParsersAction
-                       ) -> argparse.ArgumentParser:
+    def _add_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
         add = parser.add_parser("add", help="Add a portion")
         return add
 
-    def _template_arguments(self,
-                            parser: argparse._SubParsersAction
-                            ) -> argparse.ArgumentParser:
+    def _template_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
 
         template = parser.add_parser("template", help="Manage templates")
-
-        template_subparser = template.add_subparsers(dest="template_cmd")
-
-        add_parser = template_subparser.add_parser("add",
-                                                   help="Add new template")
-
-        add_parser.add_argument("template_name", help="Template name")
-
-        add_parser.add_argument("repo_url", help="GitHub repository URL")
-
         return template
 
-    def parse(self) -> argparse.Namespace:
+    def parse(self) -> Namespace:
         subparser = self.parser.add_subparsers(dest="command", required=True)
         argument_parsers = [
-            self._create_arguments(subparser),
-            self._add_arguments(subparser),
-            self._template_arguments(subparser),
+            self._new_arguments(subparser),
+            # self._add_arguments(subparser),
+            # self._template_arguments(subparser),
         ]
 
         for argument_parser in argument_parsers:

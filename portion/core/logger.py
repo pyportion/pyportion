@@ -18,6 +18,10 @@ class Logger:
             taken_time = self._end_time - self._start_time
             logging.info(f"[Time Taken: {taken_time:.2f}s] {message}")
 
+    def error(self, message: str) -> None:
+        if not self.quiet:
+            logging.info("Error: " + message)
+
     def info(self, message: str) -> None:
         if not self.quiet:
             logging.info(message)
