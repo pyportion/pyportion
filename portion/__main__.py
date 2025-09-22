@@ -1,4 +1,9 @@
 from portion.portion import Portion
 
-if __name__ == "__main__":
+
+def main() -> None:
     Portion().run()
+
+
+if __name__ == "__main__":
+    main()
