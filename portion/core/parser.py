@@ -43,8 +43,7 @@ class Parser:
 
         download_parser.add_argument("link")
 
-        # list_parser = template_subparser.add_parser(
-        #     "list", help="List all templates")
+        template_subparser.add_parser("list", help="List all templates")
 
         # remove_parser = template_subparser.add_parser(
         #     "remove", help="Remove a template")
