@@ -23,13 +23,9 @@ class Parser:
     def _new_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
         new: ArgumentParser = parser.add_parser("new",
                                                 help="Create a new project")
-        new.add_argument("name")
-        new.add_argument("-t", "--template", required=True)
+        new.add_argument("template-name", help="Template Name")
+        new.add_argument("project-name", help="Project Name")
         return new
-
-    def _add_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
-        add = parser.add_parser("add", help="Add a portion")
-        return add
 
     def _template_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
         template: ArgumentParser = parser.add_parser("template",
@@ -43,10 +39,12 @@ class Parser:
 
         download_parser.add_argument("link")
 
-        template_subparser.add_parser("list", help="List all templates")
+        delete_parser = template_subparser.add_parser(
+            "delete", help="Delete a template")
 
-        # remove_parser = template_subparser.add_parser(
-        #     "remove", help="Remove a template")
+        delete_parser.add_argument("template-name")
+
+        template_subparser.add_parser("list", help="List all templates")
 
         return template
 
@@ -55,7 +53,6 @@ class Parser:
         argument_parsers = [
             self._new_arguments(subparser),
             self._template_arguments(subparser),
-            # self._add_arguments(subparser),
         ]
 
         for argument_parser in argument_parsers:

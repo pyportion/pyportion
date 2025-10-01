@@ -1,52 +1,61 @@
-import os
-import shutil
-
-from platformdirs import user_data_dir
-from git import Repo
 from tabulate import tabulate
 
 from portion.base import CommandBase
-from portion.core.logger import Logger
+from portion.core import TemplateManager
+from portion.core import Logger
 
 
 class TemplateCommand(CommandBase):
     def __init__(self,
                  template_command: str,
                  logger: Logger,
-                 link: str | None = None) -> None:
+                 link: str | None = None,
+                 template_name: str | None = None) -> None:
         super().__init__(logger=logger)
         self.template_command = template_command
         self.link = link
+        self.template_name = template_name
 
-        self._pyportion_path = os.path.join(user_data_dir(), "pyportion")
-
-    def create_pyportion_dir(self) -> None:
-        if not os.path.exists(self._pyportion_path):
-            os.mkdir(self._pyportion_path)
+        self.template_manager = TemplateManager()
 
     def download_command(self) -> None:
         if not self.link:
-            raise ValueError("The given link is not valid")
+            raise ValueError("The link is not valid")
 
-        repo_name = self.link.split("/")[-1]
-        repo_path = os.path.join(self._pyportion_path, repo_name)
-        portion_json_path = os.path.join(repo_path, "portion.json")
+        template_name = self.link.split("/")[-1]
+        if self.template_manager.is_template_exists(template_name):
+            self.logger.info("The given repo is already exist")
+            return None
 
         self.logger.pulse(f"Clonning the template from {self.link}")
-        Repo.clone_from(self.link, repo_path)
-        if not os.path.exists(portion_json_path):
-            shutil.rmtree(repo_path)
+        self.template_manager.download_template(self.link)
+
+        if self.template_manager.delete_if_not_template(template_name):
             self.logger.info("The given template is not a portion template")
             return None
 
-        self.logger.info("Template is downloaded successfully")
+        self.logger.info(f"{template_name} has downloaded successfully")
+
+    def delete_command(self) -> None:
+        if not self.template_name:
+            raise ValueError("The template name is not valid")
+
+        if self.template_manager.delete_template(self.template_name):
+            self.logger.info(f"The {self.template_name} "
+                             "has been deleted successfully")
+            return None
+
+        self.logger.info(f"The {self.template_name} template is not exist")
 
     def list_command(self) -> None:
         headers = ["Template Name"]
-
         templates = [(x,)
-                     for x in os.listdir(self._pyportion_path)
+                     for x in self.template_manager.get_templates()
                      if not x.startswith(".")]
+
+        if not templates:
+            self.logger.info("There are no templates")
+            return None
 
         table = tabulate(templates,
                          headers=headers,
@@ -58,10 +67,11 @@ class TemplateCommand(CommandBase):
     def execute(self) -> None:
         self.logger.pulse("Executing template command")
 
-        self.create_pyportion_dir()
+        self.template_manager.create_pyportion_dir()
 
         commands = {
             "download": self.download_command,
+            "delete": self.delete_command,
             "list": self.list_command,
         }
 
