@@ -12,7 +12,7 @@ class Portion:
         parser = Parser()
         self.args = parser.parse()
         self.commands = get_commands()
-        self.logger = Logger(self.args.q, self.args.v)
+        self.logger = Logger(self.args.q)
 
     def _get_arguments(self) -> List[Tuple[Any, Any]]:
         arguments = []

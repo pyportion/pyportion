@@ -15,11 +15,6 @@ class Parser:
                               help="Suppress Logging",
                               action="store_true")
 
-        suparser.add_argument("-v",
-                              default=False,
-                              help="Verbose Logging",
-                              action="store_true")
-
     def _new_arguments(self, parser: _SubParsersAction) -> ArgumentParser:
         new: ArgumentParser = parser.add_parser("new",
                                                 help="Create a new project")
