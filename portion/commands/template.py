@@ -74,3 +74,4 @@ class TemplateCommand(CommandBase):
         }
 
         commands[self.template_command]()
+        
