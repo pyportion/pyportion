@@ -1,0 +1,42 @@
+name: Feature Request
+description: Suggest a new feature or improvement for PyPortion
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the feature
+      description: Provide a clear and concise description of the new feature or improvement.
+      placeholder: I would like PyPortion to have a feature that ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation / Use Case
+      description: Explain why this feature would be useful and how it would improve PyPortion.
+      placeholder: This would help in ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any alternative solutions you considered or why existing commands aren’t enough.
+      placeholder: I tried using `pyportion add ...` but it doesn't solve my problem because ...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm before submitting
+      options:
+        - label: I have searched for existing feature requests
+          required: true
+        - label: I have provided a clear description and motivation
+          required: true
