@@ -38,7 +38,7 @@ body:
     attributes:
       label: Actual behavior
       description: Describe what actually happened instead.
-      placeholder: It threw an error: `ModuleNotFoundError: ...`
+      placeholder: It threw an error: ModuleNotFoundError: ...
     validations:
       required: false
 
