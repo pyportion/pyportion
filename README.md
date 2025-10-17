@@ -1,18 +1,21 @@
-# Portion
+`🔴 This project is currently under rapid development and not yet ready for production use.`
 
-Portion CLI helps you kickstart new projects and manage existing ones with ease. It streamlines project setup, enforces a clean and scalable structure, and lets you focus on delivering high-quality applications
+# PyPortion
+
+PyPortion CLI helps you kickstart new projects and manage existing ones with ease. It streamlines project setup, enforces a clean and scalable structure, and lets you focus on delivering high-quality applications
 
 ## Features
 
--   🚀 Quick start – Scaffold new projects in seconds
--   🛠️ Project management – Easily maintain and organize existing projects
--   📦 Scalable structure – Enforces a clean, maintainable architecture
--   🔄 Consistency – Keeps your project structure up to standard
+- 🚀 **Quick start** – Scaffold new projects in seconds
+- 🛠️ **Project management** – Easily maintain and organize existing projects
+- 📦 **Scalable structure** – Enforces a clean, maintainable architecture
+- 🔄 **Consistency** – Keeps your project structure up to standard
 
-## Get started
+## Contributing
+We’re actively building pyportion — and we’d love your help!
+* 🐛 [Report Bugs](https://github.com/pyportion/pyportion/issues)
+* 💡 [Suggest Features](https://github.com/pyportion/pyportion/discussions)
+* 🔧 Contribute Guide
 
-### Install pyportion
-
-```bash
-pip install pyportion
-```
+## Show your support
+If you find this project interesting, please star the repository 🌟
