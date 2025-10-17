@@ -27,7 +27,6 @@ class TemplateCommand(CommandBase):
             self.logger.info("The given repo is already exist")
             return None
 
-        self.logger.pulse(f"Clonning the template from {self.link}")
         self.template_manager.download_template(self.link)
 
         if self.template_manager.delete_if_not_template(template_name):
@@ -65,7 +64,6 @@ class TemplateCommand(CommandBase):
         self.logger.info(table)
 
     def execute(self) -> None:
-        self.logger.pulse("Executing template command")
 
         self.template_manager.create_pyportion_dir()
 
@@ -75,7 +73,4 @@ class TemplateCommand(CommandBase):
             "list": self.list_command,
         }
 
-        self.logger.pulse(f"Executing {self.template_command} sub-command")
         commands[self.template_command]()
-
-        self.logger.pulse("Done executing template command")
