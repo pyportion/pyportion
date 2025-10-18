@@ -7,14 +7,28 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
 
-  - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.7.0
+  - repo: local
     hooks:
       - id: autopep8
+        name: autopep8 format
+        entry: autopep8
+        language: system
         args: ["--in-place", "--aggressive", "--aggressive"]
+        types: [python]
 
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.0.0
+  - repo: local
     hooks:
       - id: flake8
-        additional_dependencies: [flake8-bugbear]
+        name: flake8 lint
+        entry: flake8
+        language: python
+        additional_dependencies: [flake8, flake8-bugbear]
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy type check
+        entry: mypy
+        language: system
+        types: [python]
