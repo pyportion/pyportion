@@ -13,7 +13,7 @@ PyPortion CLI helps you kickstart new projects and manage existing ones with eas
 
 ## Contributing
 We’re actively building pyportion — and we’d love your help!
-* 🐛 [Report Bugs](https://github.com/pyportion/pyportion/issues)
+* 🐞 [Report Bugs](https://github.com/pyportion/pyportion/issues)
 * 💡 [Suggest Features](https://github.com/pyportion/pyportion/discussions)
 * 🔧 [Contribute Guide](https://github.com/pyportion/pyportion/blob/main/.github/CONTRIBUTING.md)
 
