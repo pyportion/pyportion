@@ -1,0 +1,59 @@
+name: 📝 Documentation Issue
+description: Report unclear, missing, or incorrect information in documentation
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Describe the issue
+      description: What part of the documentation is unclear, incorrect, or missing?
+      placeholder: |
+        Example:
+        The explanation for `portion add` command is missing details on how to specify templates.
+    validations:
+      required: true
+
+  - type: input
+    id: doc-location
+    attributes:
+      label: Location
+      description: Where did you find the issue?
+      placeholder: "e.g., README.md, CONTRIBUTING.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: improvement-suggestion
+    attributes:
+      label: Suggested improvement
+      description: How can we make the documentation clearer or more helpful?
+      placeholder: |
+        Example:
+        Add a section describing how to use `portion new` with templates and show a working example.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How much does this issue affect understanding?
+      options:
+        - Minor (typo or formatting)
+        - Moderate (unclear explanation)
+        - Major (missing important info)
+      default: 1
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm before submitting
+      options:
+        - label: I have checked for existing documentation issues
+          required: true
+        - label: I have clearly described what needs to be improved
+          required: true
