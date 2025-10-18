@@ -1,5 +1,5 @@
 ## 📝 Summary of Change
-Describe what this PR does and why it’s needed.  
+Describe what this PR does and why it’s needed.
 
 Example:
 Added `portion template download` command to fetch project templates.
@@ -7,9 +7,9 @@ Added `portion template download` command to fetch project templates.
 ## 🧩 Type of Change
 Please type the type of change below. Use one of the following examples:
 
-- Bug Fix 🐞 – fixes a bug  
-- New Feature ✨ – adds new functionality  
-- Documentation 📘 – updates or clarifies docs  
+- Bug Fix 🐞 – fixes a bug
+- New Feature ✨ – adds new functionality
+- Documentation 📘 – updates or clarifies docs
 - Other – anything else (e.g., refactor, CI, tooling)
 
 ## 🔧 Details / Implementation
@@ -27,9 +27,9 @@ Only put the issue number or none: `#9` or `none`
 ## ✅ Pre-Submission Checklist
 Please confirm the following before submitting your PR:
 
-- [ ] Code builds and runs successfully  
-- [ ] All validation actions (flake8, mypy, pytest) pass  
-- [ ] Added or updated test cases for this change (if applicable)  
-- [ ] Documentation updated (if applicable)  
-- [ ] Code follows project style and conventions  
+- [ ] Code builds and runs successfully
+- [ ] All validation actions (flake8, mypy, pytest) pass
+- [ ] Added or updated test cases for this change (if applicable)
+- [ ] Documentation updated (if applicable)
+- [ ] Code follows project style and conventions
 - [ ] Change is clearly explained and easy to revieweview
