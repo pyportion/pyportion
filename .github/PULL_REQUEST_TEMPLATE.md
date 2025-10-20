@@ -32,4 +32,4 @@ Please confirm the following before submitting your PR:
 - [ ] Added or updated test cases for this change (if applicable)
 - [ ] Documentation updated (if applicable)
 - [ ] Code follows project style and conventions
-- [ ] Change is clearly explained and easy to revieweview
+- [ ] Change is clearly explained and easy to review
