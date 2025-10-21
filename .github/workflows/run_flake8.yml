@@ -26,4 +26,4 @@ jobs:
         run: poetry install
 
       - name: Run pytest
-        run: poetry run mypy portion
+        run: poetry run flake8 portion
