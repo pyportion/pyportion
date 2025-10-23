@@ -1,11 +1,11 @@
-name: Run pytest
+name: Run isort checks
 
 on:
     pull_request:
         branches: [main]
 
 jobs:
-    pytest:
+    isort:
         runs-on: ubuntu-latest
 
         steps:
@@ -25,5 +25,5 @@ jobs:
             - name: Install dependencies
               run: poetry install
 
-            - name: Run pytest
-              run: poetry run pytest
+            - name: Run isort
+              run: poetry run isort --check --force-single-line --trailing-comma --use-parentheses .
