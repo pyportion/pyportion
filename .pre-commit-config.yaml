@@ -13,6 +13,14 @@ repos:
 
     - repo: local
       hooks:
+          - id: isort
+            name: Sort Python imports (isort)
+            entry: isort
+            language: system
+            args:
+                ["--force-single-line", "--trailing-comma", "--use-parentheses"]
+            types: [python]
+
           - id: autopep8
             name: Format Python code (autopep8)
             entry: autopep8
@@ -20,8 +28,6 @@ repos:
             args: ["--in-place", "--aggressive", "--aggressive"]
             types: [python]
 
-    - repo: local
-      hooks:
           - id: flake8
             name: Lint Python code (flake8)
             entry: flake8
@@ -29,16 +35,12 @@ repos:
             additional_dependencies: [flake8, flake8-bugbear]
             types: [python]
 
-    - repo: local
-      hooks:
           - id: mypy
             name: Type check (mypy)
             entry: mypy
             language: system
             types: [python]
 
-    - repo: local
-      hooks:
           - id: pytest
             name: Run tests (pytest)
             entry: poetry run pytest
