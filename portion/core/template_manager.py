@@ -1,6 +1,6 @@
-import sys
 import os
 import shutil
+import sys
 
 from git import Repo
 from platformdirs import user_data_dir

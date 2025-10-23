@@ -15,7 +15,7 @@ repos:
       hooks:
           - id: isort
             name: Sort Python imports (isort)
-            entry: isort
+            entry: poetry run isort
             language: system
             args:
                 ["--force-single-line", "--trailing-comma", "--use-parentheses"]
@@ -23,21 +23,21 @@ repos:
 
           - id: autopep8
             name: Format Python code (autopep8)
-            entry: autopep8
+            entry: poetry run autopep8
             language: system
             args: ["--in-place", "--aggressive", "--aggressive"]
             types: [python]
 
           - id: flake8
             name: Lint Python code (flake8)
-            entry: flake8
+            entry: poetry run flake8
             language: python
             additional_dependencies: [flake8, flake8-bugbear]
             types: [python]
 
           - id: mypy
             name: Type check (mypy)
-            entry: mypy
+            entry: poetry run mypy
             language: system
             types: [python]
 
@@ -46,3 +46,6 @@ repos:
             entry: poetry run pytest
             language: system
             types: [python]
+            pass_filenames: false
+            always_run: true
+            exclude: ""

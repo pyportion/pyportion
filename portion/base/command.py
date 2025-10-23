@@ -1,7 +1,6 @@
-from typing import Dict
-
 from abc import ABC
 from abc import abstractmethod
+from typing import Dict
 
 from portion.core import Logger
 

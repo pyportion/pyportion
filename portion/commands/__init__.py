@@ -1,6 +1,7 @@
 from typing import Dict
 
 from portion.base import CommandBase
+
 from .new import NewCommand
 from .template import TemplateCommand
 
