@@ -1,7 +1,7 @@
 import argparse
 from argparse import ArgumentParser
-from argparse import _SubParsersAction
 from argparse import Namespace
+from argparse import _SubParsersAction
 
 
 class Parser:

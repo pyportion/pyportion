@@ -3,7 +3,6 @@ from pathlib import PosixPath
 
 from portion.core.project_manager import ProjectManager
 
-
 pm = ProjectManager()
 
 

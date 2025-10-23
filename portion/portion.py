@@ -1,10 +1,10 @@
+from typing import Any
 from typing import List
 from typing import Tuple
-from typing import Any
 
-from portion.core import Parser
-from portion.core import Logger
 from portion.commands import get_commands
+from portion.core import Logger
+from portion.core import Parser
 
 
 class Portion:

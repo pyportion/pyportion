@@ -1,8 +1,8 @@
 from tabulate import tabulate
 
 from portion.base import CommandBase
-from portion.core import TemplateManager
 from portion.core import Logger
+from portion.core import TemplateManager
 
 
 class TemplateCommand(CommandBase):
