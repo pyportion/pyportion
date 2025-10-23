@@ -1,46 +1,46 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
-    hooks:
-      - id: trailing-whitespace
-        name: Remove trailing whitespace
-      - id: end-of-file-fixer
-        name: Ensure newline at end of file
-      - id: check-yaml
-        name: Check YAML syntax
-      - id: check-added-large-files
-        name: Prevent large files
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v5.0.0
+      hooks:
+          - id: trailing-whitespace
+            name: Remove trailing whitespace
+          - id: end-of-file-fixer
+            name: Ensure newline at end of file
+          - id: check-yaml
+            name: Check YAML syntax
+          - id: check-added-large-files
+            name: Prevent large files
 
-  - repo: local
-    hooks:
-      - id: autopep8
-        name: Format Python code (autopep8)
-        entry: autopep8
-        language: system
-        args: ["--in-place", "--aggressive", "--aggressive"]
-        types: [python]
+    - repo: local
+      hooks:
+          - id: autopep8
+            name: Format Python code (autopep8)
+            entry: autopep8
+            language: system
+            args: ["--in-place", "--aggressive", "--aggressive"]
+            types: [python]
 
-  - repo: local
-    hooks:
-      - id: flake8
-        name: Lint Python code (flake8)
-        entry: flake8
-        language: python
-        additional_dependencies: [flake8, flake8-bugbear]
-        types: [python]
+    - repo: local
+      hooks:
+          - id: flake8
+            name: Lint Python code (flake8)
+            entry: flake8
+            language: python
+            additional_dependencies: [flake8, flake8-bugbear]
+            types: [python]
 
-  - repo: local
-    hooks:
-      - id: mypy
-        name: Type check (mypy)
-        entry: mypy
-        language: system
-        types: [python]
+    - repo: local
+      hooks:
+          - id: mypy
+            name: Type check (mypy)
+            entry: mypy
+            language: system
+            types: [python]
 
-  - repo: local
-    hooks:
-      - id: pytest
-        name: Run tests (pytest)
-        entry: poetry run pytest
-        language: system
-        types: [python]
+    - repo: local
+      hooks:
+          - id: pytest
+            name: Run tests (pytest)
+            entry: poetry run pytest
+            language: system
+            types: [python]
