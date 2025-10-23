@@ -1,4 +1,4 @@
-name: Run Mypy Checks
+name: Run mypy checks
 
 on:
     pull_request:
@@ -25,5 +25,5 @@ jobs:
             - name: Install dependencies
               run: poetry install
 
-            - name: Run pytest
+            - name: Run mypy
               run: poetry run mypy portion

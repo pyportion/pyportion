@@ -1,4 +1,4 @@
-name: Run Mypy Checks
+name: Run flake8 checks
 
 on:
     pull_request:
@@ -25,5 +25,5 @@ jobs:
             - name: Install dependencies
               run: poetry install
 
-            - name: Run pytest
+            - name: Run flake8
               run: poetry run flake8 portion
