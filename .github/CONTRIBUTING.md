@@ -35,6 +35,7 @@ poetry install
 You can start the development process
 
 6. **Install Pre-Commit**
+One you are done from the development process, run the following:
 ```bash
 poetry run pre-commit install
 ```
@@ -42,11 +43,16 @@ poetry run pre-commit install
 7. **Commit and Push your changes**
 Use git to commit and push your changes to open a pull request
 
-Pre-Commit hooks will work locally and do the following:
+# Pre-Commit
+
+Pre-Commit hooks will work locally upon comitting and do the following if needed:
 * Format code
 * Lint code
 * Type check
+* Sort imports
 * Run test cases
+
+Note that it might automatically fix the files you committed to match our coding style, so you’ll need to add and commit those changes again before pushing.
 
 ## 🔄 Pull Request Review
 All pull requests go through an automatic review via GitHub Actions, followed by a manual review.
