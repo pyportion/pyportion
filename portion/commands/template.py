@@ -1,33 +1,25 @@
 from tabulate import tabulate
 
 from portion.base import CommandBase
-from portion.core import Logger
 from portion.core import TemplateManager
 
 
 class TemplateCommand(CommandBase):
-    def __init__(self,
-                 template_command: str,
-                 logger: Logger,
-                 link: str | None = None,
-                 template_name: str | None = None) -> None:
-        super().__init__(logger=logger)
-        self.template_command = template_command
-        self.link = link
-        self.template_name = template_name
-
+    def __init__(self) -> None:
+        super().__init__()
         self.template_manager = TemplateManager()
+        self.template_manager.create_pyportion_dir()
 
-    def download_command(self) -> None:
-        if not self.link:
+    def download(self, link: str) -> None:
+        if not link:
             raise ValueError("The link is not valid")
 
-        template_name = self.link.split("/")[-1]
+        template_name = link.split("/")[-1]
         if self.template_manager.is_template_exists(template_name):
             self.logger.info("The given repo is already exist")
             return None
 
-        self.template_manager.download_template(self.link)
+        self.template_manager.download_template(link)
 
         if self.template_manager.delete_if_not_template(template_name):
             self.logger.info("The given template is not a portion template")
@@ -35,18 +27,18 @@ class TemplateCommand(CommandBase):
 
         self.logger.info(f"{template_name} has downloaded successfully")
 
-    def delete_command(self) -> None:
-        if not self.template_name:
+    def delete(self, template_name: str) -> None:
+        if not template_name:
             raise ValueError("The template name is not valid")
 
-        if self.template_manager.delete_template(self.template_name):
-            self.logger.info(f"The {self.template_name} "
+        if self.template_manager.delete_template(template_name):
+            self.logger.info(f"The {template_name} "
                              "has been deleted successfully")
             return None
 
-        self.logger.info(f"The {self.template_name} template is not exist")
+        self.logger.info(f"The {template_name} template is not exist")
 
-    def list_command(self) -> None:
+    def list(self) -> None:
         headers = ["Template Name"]
         templates = [(x,)
                      for x in self.template_manager.get_templates()
@@ -62,15 +54,3 @@ class TemplateCommand(CommandBase):
                          stralign="left",
                          numalign="center")
         self.logger.info(table)
-
-    def execute(self) -> None:
-
-        self.template_manager.create_pyportion_dir()
-
-        commands = {
-            "download": self.download_command,
-            "delete": self.delete_command,
-            "list": self.list_command,
-        }
-
-        commands[self.template_command]()
