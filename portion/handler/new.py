@@ -1,15 +1,14 @@
 import typer
 
+from portion.base import HandlerBase
 from portion.commands import NewCommand
 
 
-class NewController:
+class NewHandler(HandlerBase):
     def __init__(self, app: typer.Typer) -> None:
-        self.command = typer.Typer()
-        app.add_typer(self.command)
-        self._register_commands()
+        super().__init__(app)
 
-    def _register_commands(self) -> None:
+    def register_commands(self) -> None:
         new_command = NewCommand()
 
         @self.command.command()
