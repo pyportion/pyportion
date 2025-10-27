@@ -1,15 +1,14 @@
 import typer
 
+from portion.base import HandlerBase
 from portion.commands import TemplateCommand
 
 
-class TemplateController:
+class TemplateHandler(HandlerBase):
     def __init__(self, app: typer.Typer) -> None:
-        self.command = typer.Typer()
-        app.add_typer(self.command, name="template")
-        self._register_commands()
+        super().__init__(app, "template")
 
-    def _register_commands(self) -> None:
+    def register_commands(self) -> None:
         template_command = TemplateCommand()
 
         @self.command.command(name="download")

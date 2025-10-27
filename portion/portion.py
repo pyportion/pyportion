@@ -1,6 +1,6 @@
 import typer
 
-from portion.controller import load_commands
+from portion.handler import load_handlers
 
 
 class Portion:
@@ -8,5 +8,5 @@ class Portion:
         self.cli = typer.Typer()
 
     def run(self) -> None:
-        load_commands(self.cli)
+        load_handlers(self.cli)
         self.cli()
