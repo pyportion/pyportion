@@ -1,6 +1,5 @@
 import os
 import shutil
-import sys
 
 from git import Repo
 from platformdirs import user_data_dir
@@ -29,7 +28,7 @@ class TemplateManager:
 
     def delete_if_not_template(self, template_name: str) -> bool:
         template_path = os.path.join(self._pyportion_path, template_name)
-        portion_json_path = os.path.join(template_path, "portion.json")
+        portion_json_path = os.path.join(template_path, ".pyportion.yml")
         if not os.path.exists(portion_json_path):
             shutil.rmtree(template_path)
             return True
@@ -51,8 +50,6 @@ class TemplateManager:
         template_path = os.path.join(self._pyportion_path,
                                      template_name)
 
-        project_path = os.path.join(sys.path[0], project_name)
-
         shutil.copytree(src=template_path,
-                        dst=project_path,
+                        dst=project_name,
                         dirs_exist_ok=True)
