@@ -2,9 +2,8 @@ import os
 
 from ruamel.yaml import YAML
 
+from portion.core.config import Config
 from portion.models import PortionMetadata
-
-CONFIG_FILE = ".pyportion.yml"
 
 
 class ProjectManager:
@@ -19,5 +18,5 @@ class ProjectManager:
         data = PortionMetadata(name=project_name,
                                portions=[])
 
-        with open(CONFIG_FILE, "w") as f:
+        with open(Config.PORTION_FILE, "w") as f:
             yaml.dump(data.to_dict(), f)
