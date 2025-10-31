@@ -1,23 +1,9 @@
 import os
-from dataclasses import asdict
-from dataclasses import dataclass
 
 from ruamel.yaml import YAML
 
-CONFIG_FILE = ".pyportion.yml"
-
-
-@dataclass
-class Portion:
-    name: str
-    link: str
-    tag: str
-
-
-@dataclass
-class PortionMetadata:
-    name: str
-    portions: list[Portion]
+from portion.core.config import Config
+from portion.models import PortionMetadata
 
 
 class ProjectManager:
@@ -32,5 +18,5 @@ class ProjectManager:
         data = PortionMetadata(name=project_name,
                                portions=[])
 
-        with open(CONFIG_FILE, "w") as f:
-            yaml.dump(asdict(data), f)
+        with open(Config.PORTION_FILE, "w") as f:
+            yaml.dump(data.to_dict(), f)

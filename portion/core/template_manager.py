@@ -4,10 +4,13 @@ import shutil
 from git import Repo
 from platformdirs import user_data_dir
 
+from portion.core.config import Config
+
 
 class TemplateManager:
     def __init__(self) -> None:
-        self._pyportion_path = os.path.join(user_data_dir(), "pyportion")
+        self._pyportion_path = os.path.join(user_data_dir(),
+                                            Config.PORTION_DIR)
 
     def create_pyportion_dir(self) -> None:
         if not os.path.exists(self._pyportion_path):
@@ -28,7 +31,8 @@ class TemplateManager:
 
     def delete_if_not_template(self, template_name: str) -> bool:
         template_path = os.path.join(self._pyportion_path, template_name)
-        portion_json_path = os.path.join(template_path, ".pyportion.yml")
+        portion_json_path = os.path.join(template_path,
+                                         Config.PORTION_FILE)
         if not os.path.exists(portion_json_path):
             shutil.rmtree(template_path)
             return True
