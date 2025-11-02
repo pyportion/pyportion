@@ -1,11 +1,13 @@
 [project]
 name = "pyportion"
-version = "0.0.8"
+version = "0.0.9"
 description = "A Python CLI tool that helps developers kickstart new projects and manage existing ones"
 authors = [
-    {name = "Murtada",email = "murtada.altarouti@gmail.com"}
+    {name = "Murtada Altarouti",email = "murtada.altarouti@gmail.com"},
+    {name = "Mohammed Alismail ",email = "mhs.m.000@gmail.com"}
 ]
-license = {text = "MIT"}
+license-files = ["LICENSE"]
+
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -38,5 +40,5 @@ packages = [
     { include = "portion" }
 ]
 
-[tool.poetry.scripts]
+[poetry.scripts]
 portion = "portion.__main__:main"
