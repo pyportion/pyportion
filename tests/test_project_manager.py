@@ -17,3 +17,12 @@ def test_create_project(tmp_path: PosixPath) -> None:
 
     pm.create_project(path)
     assert pm.is_project_exist(path) is True
+
+
+def test_initialize_project(tmp_path: PosixPath) -> None:
+    path = os.path.join(tmp_path, "project")
+    pm.create_project(path)
+
+    assert pm.is_project_initalized(path) is False
+    pm.initialize_project(path, "project")
+    assert pm.is_project_initalized(path) is True
