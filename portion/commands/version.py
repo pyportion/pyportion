@@ -8,4 +8,4 @@ class VersionCommand(CommandBase):
         super().__init__()
 
     def version(self) -> None:
-        self.logger.info(f"Portion: {version('pyportion')}")
+        self.logger.info(f"PyPortion: {version('pyportion')}")

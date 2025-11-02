@@ -5,7 +5,7 @@ on:
         branches: [main]
 
 jobs:
-    isort:
+    check-isort:
         runs-on: ubuntu-latest
 
         steps:
