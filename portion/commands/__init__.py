@@ -1,9 +1,6 @@
 from .init import InitCommand
 from .new import NewCommand
 from .template import TemplateCommand
+from .version import VersionCommand
 
-__all__ = [
-    "InitCommand",
-    "NewCommand",
-    "TemplateCommand"
-]
+__all__ = ["InitCommand", "NewCommand", "TemplateCommand", "VersionCommand"]

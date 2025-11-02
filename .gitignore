@@ -5,3 +5,5 @@ dist
 .coverage
 htmlcov/
 coverage.xml
+.vscode
+.conform.json
