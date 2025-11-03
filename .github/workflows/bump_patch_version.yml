@@ -1,4 +1,4 @@
-name: Bump Minor Version
+name: Bump Patch Version
 
 on:
     workflow_dispatch:
@@ -7,8 +7,8 @@ permissions:
     contents: write
 
 jobs:
-    bump-minor-version:
-        name: Bump Minor Version
+    bump-patch-version:
+        name: Bump Patch Version
         runs-on: ubuntu-latest
 
         steps:
@@ -25,10 +25,10 @@ jobs:
             - name: Install Poetry
               run: pip install poetry
 
-            - name: Bump minor version
+            - name: Bump patch version
               run: |
                   CURRENT=$(poetry version --short)
-                  poetry version minor
+                  poetry version patch
                   NEW=$(poetry version --short)
                   git add pyproject.toml
                   git config user.name "github-actions[bot]"
