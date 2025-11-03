@@ -49,17 +49,3 @@ repos:
             pass_filenames: false
             always_run: true
             exclude: ""
-
-          - id: poetry-version-patch
-            name: Increment Poetry version (patch)
-            entry: bash
-            language: system
-            pass_filenames: false
-            always_run: true
-            args:
-            - -c
-            - |
-                if git diff --quiet pyproject.toml; then
-                  NEW_VERSION=$(poetry version patch | awk '{print $4}')
-                  git add pyproject.toml
-                fi
