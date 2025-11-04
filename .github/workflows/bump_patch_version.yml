@@ -1,0 +1,37 @@
+name: Bump Patch Version
+
+on:
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    bump-patch-version:
+        name: Bump Patch Version
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  ssh-key: ${{ secrets.ACTIONS }}
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+
+            - name: Install Poetry
+              run: pip install poetry
+
+            - name: Bump patch version
+              run: |
+                  CURRENT=$(poetry version --short)
+                  poetry version patch
+                  NEW=$(poetry version --short)
+                  git add pyproject.toml
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git commit -m "chore: bump version $CURRENT → $NEW [skip ci]" || echo "No version change"
+                  git push
