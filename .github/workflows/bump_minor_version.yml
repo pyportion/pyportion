@@ -15,7 +15,7 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v4
               with:
-                  persist-credentials: true
+                  ssh-key: ${{ secrets.ACTIONS }}
 
             - name: Set up Python
               uses: actions/setup-python@v5
