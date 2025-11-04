@@ -25,13 +25,20 @@ jobs:
             - name: Install Poetry
               run: pip install poetry
 
-            - name: Bump minor version
+            - name: Bump minor version and create tag
               run: |
+                  set -e
                   CURRENT=$(poetry version --short)
                   poetry version minor
                   NEW=$(poetry version --short)
+
                   git add pyproject.toml
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git commit -m "chore: bump version $CURRENT → $NEW [skip ci]" || echo "No version change"
+
+                  git commit -m "ci: $CURRENT → $NEW" || echo "No version change"
                   git push
+
+                  TAG="v$NEW"
+                  git tag -a "$TAG" -m "Release $TAG"
+                  git push origin "$TAG"
