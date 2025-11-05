@@ -9,7 +9,7 @@ class DictMixin:
 
 
 @dataclass
-class Portion(DictMixin):
+class Template(DictMixin):
     name: str
     link: str
     tag: str
@@ -18,4 +18,4 @@ class Portion(DictMixin):
 @dataclass
 class PortionMetadata(DictMixin):
     name: str
-    portions: list[Portion]
+    templates: list[Template]
