@@ -24,7 +24,30 @@ class ProjectManager:
 
         yaml = YAML()
         data = PortionMetadata(name=project_name,
-                               portions=[])
+                               templates=[])
 
         with open(path, "w") as f:
-            yaml.dump(data.to_dict(), f)
+            yaml.dump(data.model_dump(), f)
+
+    def read_configuration(self, project_path: str) -> PortionMetadata:
+        path = os.path.join(project_path, Config.PORTION_FILE)
+        yaml = YAML()
+
+        with open(path, "r") as f:
+            data = yaml.load(f)
+        return PortionMetadata(**data)
+
+    def update_configuration(self,
+                             project_path: str,
+                             metadata: PortionMetadata) -> bool:
+        try:
+            path = os.path.join(project_path, Config.PORTION_FILE)
+            yaml = YAML()
+
+            with open(path, "w") as f:
+                yaml.dump(metadata.model_dump(), f)
+
+            return True
+
+        except Exception:
+            return False

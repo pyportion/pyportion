@@ -1,21 +1,12 @@
-from dataclasses import asdict
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 
-@dataclass
-class DictMixin:
-    def to_dict(self) -> dict:
-        return asdict(self)
-
-
-@dataclass
-class Portion(DictMixin):
+class Template(BaseModel):
     name: str
     link: str
     tag: str
 
 
-@dataclass
-class PortionMetadata(DictMixin):
+class PortionMetadata(BaseModel):
     name: str
-    portions: list[Portion]
+    templates: list[Template]
