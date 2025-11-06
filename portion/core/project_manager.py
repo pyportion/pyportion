@@ -27,7 +27,7 @@ class ProjectManager:
                                templates=[])
 
         with open(path, "w") as f:
-            yaml.dump(data.to_dict(), f)
+            yaml.dump(data.model_dump(), f)
 
     def read_configuration(self, project_path: str) -> PortionMetadata:
         path = os.path.join(project_path, Config.PORTION_FILE)
@@ -45,7 +45,7 @@ class ProjectManager:
             yaml = YAML()
 
             with open(path, "w") as f:
-                yaml.dump(metadata.to_dict(), f)
+                yaml.dump(metadata.model_dump(), f)
 
             return True
 
