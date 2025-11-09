@@ -1,6 +1,7 @@
+from .add import AddCommand
 from .init import InitCommand
-from .manage import ManageCommand
 from .new import NewCommand
+from .remove import RemoveCommand
 from .template import TemplateCommand
 from .version import VersionCommand
 
@@ -8,4 +9,6 @@ __all__ = ["InitCommand",
            "NewCommand",
            "TemplateCommand",
            "VersionCommand",
-           "ManageCommand",]
+           "AddCommand",
+           "RemoveCommand",
+           ]
