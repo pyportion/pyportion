@@ -41,5 +41,5 @@ packages = [
     { include = "portion" }
 ]
 
-[poetry.scripts]
+[project.scripts]
 portion = "portion.__main__:main"
