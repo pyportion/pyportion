@@ -3,7 +3,7 @@ import os
 from ruamel.yaml import YAML
 
 from portion.core.config import Config
-from portion.models import PortionMetadata
+from portion.models import PortionConfig
 
 
 class ProjectManager:
@@ -23,31 +23,25 @@ class ProjectManager:
         path = os.path.join(project_path, Config.PORTION_FILE)
 
         yaml = YAML()
-        data = PortionMetadata(name=project_name,
-                               templates=[])
+        data = PortionConfig(name=project_name,
+                             templates=[])
 
         with open(path, "w") as f:
             yaml.dump(data.model_dump(), f)
 
-    def read_configuration(self, project_path: str) -> PortionMetadata:
+    def read_configuration(self, project_path: str) -> PortionConfig:
         path = os.path.join(project_path, Config.PORTION_FILE)
         yaml = YAML()
 
         with open(path, "r") as f:
             data = yaml.load(f)
-        return PortionMetadata(**data)
+        return PortionConfig(**data)
 
     def update_configuration(self,
                              project_path: str,
-                             metadata: PortionMetadata) -> bool:
-        try:
-            path = os.path.join(project_path, Config.PORTION_FILE)
-            yaml = YAML()
+                             config: PortionConfig) -> None:
+        path = os.path.join(project_path, Config.PORTION_FILE)
+        yaml = YAML()
 
-            with open(path, "w") as f:
-                yaml.dump(metadata.model_dump(), f)
-
-            return True
-
-        except Exception:
-            return False
+        with open(path, "w") as f:
+            yaml.dump(config.model_dump(), f)

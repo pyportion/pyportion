@@ -3,8 +3,10 @@ import shutil
 
 from git import Repo
 from platformdirs import user_data_dir
+from ruamel.yaml import YAML
 
 from portion.core.config import Config
+from portion.models import TemplateConfig
 
 
 class TemplateManager:
@@ -57,3 +59,24 @@ class TemplateManager:
         shutil.copytree(src=template_path,
                         dst=project_name,
                         dirs_exist_ok=True)
+
+    def read_configuration(self, template_name: str) -> TemplateConfig:
+        path = os.path.join(self._pyportion_path,
+                            template_name,
+                            Config.PORTION_FILE)
+
+        yaml = YAML()
+        with open(path, "r") as f:
+            data = yaml.load(f)
+        return TemplateConfig(**data)
+
+    def update_configuration(self,
+                             template_name: str,
+                             config: TemplateConfig) -> None:
+        path = os.path.join(self._pyportion_path,
+                            template_name,
+                            Config.PORTION_FILE)
+
+        yaml = YAML()
+        with open(path, "w") as f:
+            yaml.dump(config.model_dump(), f)

@@ -3,7 +3,7 @@ import sys
 from portion.base import CommandBase
 from portion.core import ProjectManager
 from portion.core import TemplateManager
-from portion.models import Template
+from portion.models import ProjectTemplate
 
 
 class AddCommand(CommandBase):
@@ -26,9 +26,9 @@ class AddCommand(CommandBase):
                 return None
 
         # TODO: template should be gotten from template manager
-        config.templates.append(Template(name=template_name,
-                                         link="",
-                                         tag="v1.0.0"))
+        config.templates.append(ProjectTemplate(name=template_name,
+                                                link="",
+                                                tag="v1.0.0"))
 
         self.project_manager.update_configuration(path, config)
         self.logger.info(f"{template_name} has been added successfully")

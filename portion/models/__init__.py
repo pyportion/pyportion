@@ -1,12 +1,11 @@
-from pydantic import BaseModel
+from .project import PortionConfig
+from .project import ProjectTemplate
+from .template import TemplateConfig
+from .template import TemplateSource
 
-
-class Template(BaseModel):
-    name: str
-    link: str
-    tag: str
-
-
-class PortionMetadata(BaseModel):
-    name: str
-    templates: list[Template]
+__all__ = [
+    "PortionConfig",
+    "ProjectTemplate",
+    "TemplateConfig",
+    "TemplateSource",
+]

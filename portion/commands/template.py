@@ -2,6 +2,7 @@ from tabulate import tabulate
 
 from portion.base import CommandBase
 from portion.core import TemplateManager
+from portion.models import TemplateSource
 
 
 class TemplateCommand(CommandBase):
@@ -24,6 +25,10 @@ class TemplateCommand(CommandBase):
         if self.template_manager.delete_if_not_template(template_name):
             self.logger.info("The given template is not a portion template")
             return None
+
+        config = self.template_manager.read_configuration(template_name)
+        config.source = TemplateSource(link=link, tag="main")
+        self.template_manager.update_configuration(template_name, config)
 
         self.logger.info(f"{template_name} has downloaded successfully")
 
