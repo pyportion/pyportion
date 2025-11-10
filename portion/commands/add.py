@@ -25,10 +25,15 @@ class AddCommand(CommandBase):
                 self.logger.error("The template is already added")
                 return None
 
-        # TODO: template should be gotten from template manager
-        config.templates.append(ProjectTemplate(name=template_name,
-                                                link="",
-                                                tag="v1.0.0"))
+        tconfig = self.template_manager.read_configuration(template_name)
+
+        if not tconfig.source:
+            self.logger.error("The template is incompelete")
+            return None
+
+        config.templates.append(ProjectTemplate(name=tconfig.name,
+                                                link=tconfig.source.link,
+                                                tag=tconfig.source.tag))
 
         self.project_manager.update_configuration(path, config)
         self.logger.info(f"{template_name} has been added successfully")
