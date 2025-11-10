@@ -18,9 +18,9 @@ class AddCommand(CommandBase):
             return None
 
         path = sys.path[0]
-        config = self.project_manager.read_configuration(path)
+        pconfig = self.project_manager.read_configuration(path)
 
-        for template in config.templates:
+        for template in pconfig.templates:
             if template.name == template_name:
                 self.logger.error("The template is already added")
                 return None
@@ -31,9 +31,9 @@ class AddCommand(CommandBase):
             self.logger.error("The template is incompelete")
             return None
 
-        config.templates.append(ProjectTemplate(name=tconfig.name,
-                                                link=tconfig.source.link,
-                                                tag=tconfig.source.tag))
+        pconfig.templates.append(ProjectTemplate(name=tconfig.name,
+                                                 link=tconfig.source.link,
+                                                 tag=tconfig.source.tag))
 
-        self.project_manager.update_configuration(path, config)
+        self.project_manager.update_configuration(path, pconfig)
         self.logger.info(f"{template_name} has been added successfully")

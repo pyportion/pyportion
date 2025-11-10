@@ -12,31 +12,33 @@ class OperationTypes(Enum):
     REPLACE = "replace"
 
 
-class AskStep(BaseModel):
+class TemplateAskStep(BaseModel):
     type: Literal[OperationTypes.ASK]
     question: str
     variable: str
 
 
-class CopyStep(BaseModel):
+class TemplateCopyStep(BaseModel):
     type: Literal[OperationTypes.COPY]
     from_path: str
     to_path: str
 
 
-class ReplaceStep(BaseModel):
+class TemplateReplaceStep(BaseModel):
     type: Literal[OperationTypes.REPLACE]
     path: str
     keyword: str
     value: str
 
 
-TemplatePortionSteps = Union[AskStep, CopyStep, ReplaceStep]
+TemplatePortionStepsType = Union[TemplateAskStep,
+                                 TemplateCopyStep,
+                                 TemplateReplaceStep]
 
 
 class TemplatePortion(BaseModel):
     name: str
-    steps: list[TemplatePortionSteps]
+    steps: list[TemplatePortionStepsType]
 
 
 class TemplateSource(BaseModel):

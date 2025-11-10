@@ -12,5 +12,5 @@ class BuildHandler(HandlerBase):
         build_command = BuildCommand()
 
         @self.command.command()
-        def build() -> None:
-            build_command.build()
+        def build(portion_name: str) -> None:
+            build_command.build(portion_name)
