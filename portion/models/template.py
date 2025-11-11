@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import Literal
 from typing import Optional
 from typing import Union
 
@@ -13,20 +12,20 @@ class OperationTypes(Enum):
 
 
 class TemplateAskStep(BaseModel):
-    type: Literal[OperationTypes.ASK]
+    type: OperationTypes
     question: str
     variable: str
 
 
 class TemplateCopyStep(BaseModel):
-    type: Literal[OperationTypes.COPY]
-    from_path: str
-    to_path: str
+    type: OperationTypes
+    from_path: list
+    to_path: list
 
 
 class TemplateReplaceStep(BaseModel):
-    type: Literal[OperationTypes.REPLACE]
-    path: str
+    type: OperationTypes
+    path: list
     keyword: str
     value: str
 

@@ -3,6 +3,10 @@ import sys
 from portion.base import CommandBase
 from portion.core import ProjectManager
 from portion.core import TemplateManager
+from portion.models import TemplateAskStep
+from portion.models import TemplateCopyStep
+from portion.models import TemplatePortion
+from portion.models import TemplateReplaceStep
 
 
 class BuildCommand(CommandBase):
@@ -11,17 +15,42 @@ class BuildCommand(CommandBase):
         self.project_manager = ProjectManager()
         self.template_manager = TemplateManager()
 
+    def _run_ask_step(self, step: TemplateAskStep) -> None:
+        print("Running ask step")
+        print(step)
+
+    def _run_copy_step(self, step: TemplateCopyStep) -> None:
+        print("Running Copy Step")
+        print(step)
+
+    def _run_replace_step(self, step: TemplateReplaceStep) -> None:
+        print("Running Replace step")
+        print(step)
+
+    def _find_portion(self,
+                      portions: list[TemplatePortion],
+                      portion_name: str) -> TemplatePortion | None:
+        for portion in portions:
+            if portion.name == portion_name:
+                return portion
+        return None
+
     def build(self, portion_name: str) -> None:
         path = sys.path[0]
 
         pconfig = self.project_manager.read_configuration(path)
 
-        tconfigs = [self.template_manager.read_configuration(x.name)
-                    for x in pconfig.templates]
+        portions = [portion
+                    for x in pconfig.templates
+                    for portion in
+                    self.template_manager.read_configuration(x.name).portions]
 
-        portions = [x.portions for x in tconfigs]
+        portion = self._find_portion(portions, portion_name)
 
-        portions
-        # search for command build
-        # get the execution steps
-        # execute them one by one
+        if not portion:
+            self.logger.error(f"There is no portion called {portion_name}")
+            return None
+
+        for step in portion.steps:
+            function = f"_run_{step.type.value}_step"
+            getattr(self, function)(step)

@@ -1,7 +1,7 @@
 from typer import Typer
 
 from .add import AddHandler
-from .build import BuildCommand
+from .build import BuildHandler
 from .init import InitHandler
 from .install import InstallHandler
 from .new import NewHandler
@@ -13,7 +13,7 @@ from .version import VersionHandler
 def load_handlers(app: Typer) -> None:
     all_commands = [
         AddHandler,
-        BuildCommand,
+        BuildHandler,
         InitHandler,
         InstallHandler,
         NewHandler,
