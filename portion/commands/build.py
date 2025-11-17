@@ -14,18 +14,17 @@ class BuildCommand(CommandBase):
         super().__init__()
         self.project_manager = ProjectManager()
         self.template_manager = TemplateManager()
+        self._memory: dict[str, str] = {}
 
     def _run_ask_step(self, step: TemplateAskStep) -> None:
-        print("Running ask step")
-        print(step)
+        self.logger.info(step.question)
+        self._memory[step.variable] = input()
 
     def _run_copy_step(self, step: TemplateCopyStep) -> None:
         print("Running Copy Step")
-        print(step)
 
     def _run_replace_step(self, step: TemplateReplaceStep) -> None:
         print("Running Replace step")
-        print(step)
 
     def _find_portion(self,
                       portions: list[TemplatePortion],
