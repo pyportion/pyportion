@@ -26,6 +26,7 @@ class TemplateCopyStep(BaseModel):
 class TemplateReplacements(BaseModel):
     keyword: str
     value: str
+    mode: str
 
 
 class TemplateReplaceStep(BaseModel):

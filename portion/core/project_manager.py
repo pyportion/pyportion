@@ -32,6 +32,17 @@ class ProjectManager:
         with open(path, "w") as f:
             yaml.dump(data.model_dump(), f)
 
+    def replace_in_file(self,
+                        file_path: list[str],
+                        replacements: dict[str, str]) -> None:
+        with open(os.path.join(*file_path), "r+") as f:
+            data = f.read()
+            for keyword, value in replacements.items():
+                data = data.replace(keyword, value)
+            f.seek(0)
+            f.write(data)
+            f.truncate()
+
     def read_configuration(self, project_path: str | Path) -> PortionConfig:
         path = os.path.join(project_path, Config.PORTION_FILE)
         yaml = YAML()
