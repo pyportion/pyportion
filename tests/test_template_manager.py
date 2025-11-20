@@ -78,8 +78,8 @@ def test_copy_template(mock_user_data_dir: PosixPath) -> None:
     template_name = "pyportion-template"
     project_name = "pyportion-project"
 
-    template_path = (mock_user_data_dir / "pyportion" / template_name)
-    template_path.mkdir()
+    template_path = (mock_user_data_dir / "pyportion" / template_name / "base")
+    template_path.mkdir(parents=True)
 
     pyportion_file_path = (template_path / ".pyportion.yml")
     pyportion_file_path.touch()

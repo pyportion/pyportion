@@ -23,5 +23,7 @@ class NewCommand(CommandBase):
         self.template_manager.copy_template(template_name,
                                             project_name)
 
+        self.project_manager.initialize_project(project_name, project_name)
+
         self.logger.info(
             f"{project_name} project has been created successfully")

@@ -19,15 +19,19 @@ class TemplateAskStep(BaseModel):
 
 class TemplateCopyStep(BaseModel):
     type: OperationTypes
-    from_path: list
-    to_path: list
+    from_path: list[str]
+    to_path: list[str]
+
+
+class TemplateReplacements(BaseModel):
+    keyword: str
+    value: str
 
 
 class TemplateReplaceStep(BaseModel):
     type: OperationTypes
-    path: list
-    keyword: str
-    value: str
+    path: list[str]
+    replacements: list[TemplateReplacements]
 
 
 TemplatePortionStepsType = Union[TemplateAskStep,

@@ -54,11 +54,25 @@ class TemplateManager:
 
     def copy_template(self, template_name: str, project_name: str) -> None:
         template_path = os.path.join(self._pyportion_path,
-                                     template_name)
+                                     template_name,
+                                     "base")
 
         shutil.copytree(src=template_path,
                         dst=project_name,
                         dirs_exist_ok=True)
+
+    def copy_portion(self,
+                     template_name: str,
+                     portion_path: list[str],
+                     dest_path: list[str]) -> None:
+
+        path = os.path.join(self._pyportion_path,
+                            template_name,
+                            ".portion",
+                            *portion_path)
+
+        dest = os.path.join(*dest_path)
+        shutil.copyfile(path, dest)
 
     def read_configuration(self, template_name: str) -> TemplateConfig:
         path = os.path.join(self._pyportion_path,

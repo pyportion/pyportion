@@ -1,4 +1,4 @@
-import sys
+from pathlib import Path
 
 from portion.base import CommandBase
 from portion.core import ProjectManager
@@ -17,7 +17,7 @@ class AddCommand(CommandBase):
             self.logger.error("The given template is not exist")
             return None
 
-        path = sys.path[0]
+        path = Path.cwd()
         pconfig = self.project_manager.read_configuration(path)
 
         for template in pconfig.templates:

@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from ruamel.yaml import YAML
 
@@ -10,7 +11,7 @@ class ProjectManager:
     def is_project_exist(self, project_name: str) -> bool:
         return os.path.exists(project_name)
 
-    def is_project_initalized(self, project_path: str) -> bool:
+    def is_project_initalized(self, project_path: str | Path) -> bool:
         path = os.path.join(project_path, Config.PORTION_FILE)
         if os.path.exists(path):
             return True
@@ -19,7 +20,9 @@ class ProjectManager:
     def create_project(self, project_name: str) -> None:
         os.mkdir(project_name)
 
-    def initialize_project(self, project_path: str, project_name: str) -> None:
+    def initialize_project(self,
+                           project_path: str | Path,
+                           project_name: str) -> None:
         path = os.path.join(project_path, Config.PORTION_FILE)
 
         yaml = YAML()
@@ -29,7 +32,7 @@ class ProjectManager:
         with open(path, "w") as f:
             yaml.dump(data.model_dump(), f)
 
-    def read_configuration(self, project_path: str) -> PortionConfig:
+    def read_configuration(self, project_path: str | Path) -> PortionConfig:
         path = os.path.join(project_path, Config.PORTION_FILE)
         yaml = YAML()
 
@@ -38,7 +41,7 @@ class ProjectManager:
         return PortionConfig(**data)
 
     def update_configuration(self,
-                             project_path: str,
+                             project_path: str | Path,
                              config: PortionConfig) -> None:
         path = os.path.join(project_path, Config.PORTION_FILE)
         yaml = YAML()
