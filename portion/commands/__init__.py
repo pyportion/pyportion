@@ -1,4 +1,5 @@
 from .add import AddCommand
+from .build import BuildCommand
 from .init import InitCommand
 from .install import InstallCommand
 from .new import NewCommand
@@ -8,6 +9,7 @@ from .version import VersionCommand
 
 __all__ = [
     "AddCommand",
+    "BuildCommand",
     "InitCommand",
     "InstallCommand",
     "NewCommand",

@@ -1,4 +1,4 @@
-import sys
+from pathlib import Path
 
 from portion.base import CommandBase
 from portion.core import ProjectManager
@@ -12,7 +12,7 @@ class InstallCommand(CommandBase):
         self.template_manager = TemplateManager()
 
     def install(self) -> None:
-        path = sys.path[0]
+        path = Path.cwd()
         config = self.project_manager.read_configuration(path)
 
         for template in config.templates:

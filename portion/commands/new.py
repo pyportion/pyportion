@@ -1,6 +1,7 @@
 from portion.base import CommandBase
 from portion.core import ProjectManager
 from portion.core import TemplateManager
+from portion.models import ProjectTemplate
 
 
 class NewCommand(CommandBase):
@@ -18,10 +19,20 @@ class NewCommand(CommandBase):
             self.logger.error("The template is not exist")
             return None
 
+        tconfig = self.template_manager.read_configuration(template_name)
+
+        if not tconfig.source:
+            self.logger.error("The template is incompelete")
+            return None
+
         self.project_manager.create_project(project_name)
+        self.template_manager.copy_template(template_name, project_name)
+        self.project_manager.initialize_project(project_name, project_name)
 
-        self.template_manager.copy_template(template_name,
-                                            project_name)
+        pconfig = self.project_manager.read_configuration(project_name)
+        pconfig.templates.append(ProjectTemplate(name=tconfig.name,
+                                                 link=tconfig.source.link,
+                                                 tag=tconfig.source.tag))
+        self.project_manager.update_configuration(project_name, pconfig)
 
-        self.logger.info(
-            f"{project_name} project has been created successfully")
+        self.logger.info(f"{project_name} project is successfully created")
