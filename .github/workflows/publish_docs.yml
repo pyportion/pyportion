@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
 
 permissions:
   contents: write
@@ -23,5 +26,5 @@ jobs:
       - name: Install dependencies
         run: pip install mkdocs-material
 
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+      - name: Deploy to 'docs' branch
+        run: mkdocs gh-deploy --force --remote-branch docs
