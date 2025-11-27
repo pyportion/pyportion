@@ -55,4 +55,4 @@ extra_javascript:
 
 nav:
     - Home: index.md
-    - Getting Started: pages/getting-started.md
+    - Get Started: pages/get-started.md

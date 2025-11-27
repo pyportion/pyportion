@@ -27,4 +27,4 @@ jobs:
         run: pip install mkdocs-material
 
       - name: Deploy to 'docs' branch
-        run: mkdocs gh-deploy --force --remote-branch docs
+        run: mkdocs gh-deploy --force
