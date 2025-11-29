@@ -11,7 +11,7 @@ class Portion:
                                help="Portion CLI - Scaffolding Tool")
 
     def callback(self,
-                 verbose: bool = typer.Option(  # noqa: B008
+                 verbose: bool = typer.Option(
                      False,
                      "--verbose", "-v",
                      help="Enable verbose mode")) -> None:
