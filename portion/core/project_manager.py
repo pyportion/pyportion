@@ -12,7 +12,7 @@ class ProjectManager:
         return os.path.exists(project_name)
 
     def is_project_initalized(self, project_path: str | Path) -> bool:
-        path = os.path.join(project_path, Config.PORTION_FILE)
+        path = os.path.join(project_path, Config.portion_file)
         if os.path.exists(path):
             return True
         return False
@@ -23,7 +23,7 @@ class ProjectManager:
     def initialize_project(self,
                            project_path: str | Path,
                            project_name: str) -> None:
-        path = os.path.join(project_path, Config.PORTION_FILE)
+        path = os.path.join(project_path, Config.portion_file)
 
         yaml = YAML()
         data = PortionConfig(name=project_name,
@@ -44,7 +44,7 @@ class ProjectManager:
             f.truncate()
 
     def read_configuration(self, project_path: str | Path) -> PortionConfig:
-        path = os.path.join(project_path, Config.PORTION_FILE)
+        path = os.path.join(project_path, Config.portion_file)
         yaml = YAML()
 
         with open(path, "r") as f:
@@ -54,7 +54,7 @@ class ProjectManager:
     def update_configuration(self,
                              project_path: str | Path,
                              config: PortionConfig) -> None:
-        path = os.path.join(project_path, Config.PORTION_FILE)
+        path = os.path.join(project_path, Config.portion_file)
         yaml = YAML()
 
         with open(path, "w") as f:
