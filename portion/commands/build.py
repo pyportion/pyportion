@@ -2,6 +2,7 @@ import re
 from pathlib import Path
 
 from portion.base import CommandBase
+from portion.core import Message
 from portion.core import ProjectManager
 from portion.core import TemplateManager
 from portion.models import ProjectTemplate
@@ -102,8 +103,10 @@ class BuildCommand(CommandBase):
     def build(self, portion_name: str) -> None:
         path = Path.cwd()
 
+        self.logger.pulse(Message.Build.READING_CONFIG)
         pconfig = self.project_manager.read_configuration(path)
 
+        self.logger.pulse(Message.Build.COLLECTING_PORTIONS)
         portions = [(t, portion)
                     for t in pconfig.templates
                     for portion in
@@ -112,11 +115,15 @@ class BuildCommand(CommandBase):
         template_portion = self._find_portion(portions, portion_name)
 
         if not template_portion:
-            self.logger.error(f"There is no portion called {portion_name}")
+            self.logger.error(Message.Build.NO_PORTION,
+                              portion_name=portion_name)
             return None
 
         template, portion = template_portion
 
         for step in portion.steps:
+            self.logger.pulse(Message.Build.RUNNING_STEP,
+                              step_type=step.type.value)
+
             function = f"_run_{step.type.value}_step"
             getattr(self, function)(template, step)

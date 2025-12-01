@@ -12,7 +12,7 @@ from portion.models import TemplateConfig
 class TemplateManager:
     def __init__(self) -> None:
         self._pyportion_path = os.path.join(user_data_dir(),
-                                            Config.PORTION_DIR)
+                                            Config.portion_dir)
 
     def create_pyportion_dir(self) -> None:
         if not os.path.exists(self._pyportion_path):
@@ -34,7 +34,7 @@ class TemplateManager:
     def delete_if_not_template(self, template_name: str) -> bool:
         template_path = os.path.join(self._pyportion_path, template_name)
         portion_json_path = os.path.join(template_path,
-                                         Config.PORTION_FILE)
+                                         Config.portion_file)
         if not os.path.exists(portion_json_path):
             shutil.rmtree(template_path)
             return True
@@ -77,7 +77,7 @@ class TemplateManager:
     def read_configuration(self, template_name: str) -> TemplateConfig:
         path = os.path.join(self._pyportion_path,
                             template_name,
-                            Config.PORTION_FILE)
+                            Config.portion_file)
 
         yaml = YAML()
         with open(path, "r") as f:
@@ -89,7 +89,7 @@ class TemplateManager:
                              config: TemplateConfig) -> None:
         path = os.path.join(self._pyportion_path,
                             template_name,
-                            Config.PORTION_FILE)
+                            Config.portion_file)
 
         yaml = YAML()
         with open(path, "w") as f:

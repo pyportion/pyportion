@@ -1,6 +1,7 @@
 from importlib.metadata import version
 
 from portion.base import CommandBase
+from portion.core import Message
 
 
 class VersionCommand(CommandBase):
@@ -8,4 +9,5 @@ class VersionCommand(CommandBase):
         super().__init__()
 
     def version(self) -> None:
-        self.logger.info(f"PyPortion: {version('pyportion')}")
+        self.logger.info(Message.Version.DISPLAY,
+                         version=version("pyportion"))
