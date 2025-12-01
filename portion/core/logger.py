@@ -3,7 +3,7 @@ from __future__ import annotations
 from rich.console import Console
 from rich.theme import Theme
 
-from portion.core.state import cli_state
+from portion.models.state import cli_state
 
 
 class Logger:
