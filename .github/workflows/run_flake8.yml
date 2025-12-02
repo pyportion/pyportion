@@ -23,7 +23,9 @@ jobs:
                   pip install poetry
 
             - name: Install dependencies
-              run: poetry install
+              run: |
+                  poetry install
+                  poetry run pip install Flake8-pyproject
 
             - name: Run flake8
               run: poetry run flake8 portion
