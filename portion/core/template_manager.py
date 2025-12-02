@@ -5,7 +5,7 @@ from git import Repo
 from platformdirs import user_data_dir
 from ruamel.yaml import YAML
 
-from portion.core.config import Config
+from portion.models import Config
 from portion.models import TemplateConfig
 
 

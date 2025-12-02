@@ -3,8 +3,8 @@ name = "pyportion"
 version = "0.5.0"
 description = "A Python CLI tool that helps developers kickstart new projects and manage existing ones"
 authors = [
-    {name = "Murtada Altarouti",email = "murtada.altarouti@gmail.com"},
-    {name = "Mohammed Alismail ",email = "mhs.m.000@gmail.com"}
+    { name = "Murtada Altarouti", email = "murtada.altarouti@gmail.com" },
+    { name = "Mohammed Alismail ", email = "mhs.m.000@gmail.com" },
 ]
 license-files = ["LICENSE"]
 
@@ -35,13 +35,19 @@ dev = [
     "pytest (>=8.4.2,<9.0.0)",
     "types-tabulate (>=0.9.0.20241207,<0.10.0.0)",
     "isort (>=7.0.0,<8.0.0)",
-    "mkdocs-material (>=9.7.0,<10.0.0)"
+    "mkdocs-material (>=9.7.0,<10.0.0)",
 ]
 
 [tool.poetry]
-packages = [
-    { include = "portion" }
-]
+packages = [{ include = "portion" }]
 
 [project.scripts]
 portion = "portion.__main__:main"
+
+[tool.isort]
+force_single_line = true
+include_trailing_comma = true
+use_parentheses = true
+
+[tool.flake8]
+extend-immutable-calls = ["typer.Option"]
