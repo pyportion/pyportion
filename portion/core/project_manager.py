@@ -3,7 +3,7 @@ from pathlib import Path
 
 from ruamel.yaml import YAML
 
-from portion.core.config import Config
+from portion.models import Config
 from portion.models import PortionConfig
 
 

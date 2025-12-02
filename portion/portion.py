@@ -1,7 +1,7 @@
 import typer
 
 from portion.handler import load_handlers
-from portion.models.state import cli_state
+from portion.models import cli_state
 
 
 class Portion:

@@ -15,9 +15,9 @@ class TemplateHandler(HandlerBase):
         def download(link: str) -> None:
             template_command.download(link)
 
-        @self.command.command(name="delete")
-        def delete(template_name: str) -> None:
-            template_command.delete(template_name)
+        @self.command.command(name="remove")
+        def remove(template_name: str) -> None:
+            template_command.remove(template_name)
 
         @self.command.command(name="list")
         def list() -> None:

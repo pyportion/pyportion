@@ -1,8 +1,11 @@
+import re
+
 from tabulate import tabulate
 
 from portion.base import CommandBase
 from portion.core import Message
 from portion.core import TemplateManager
+from portion.models import Config
 
 
 class TemplateCommand(CommandBase):
@@ -11,8 +14,20 @@ class TemplateCommand(CommandBase):
         self.template_manager = TemplateManager()
         self.template_manager.create_pyportion_dir()
 
+    def _check_link(self, link: str) -> bool:
+        return bool(re.match(r"^https?:\/\/\S+$", link))
+
+    def _resolve_link(self, link: str) -> str:
+        if link.startswith("gh"):
+            link = link.replace("gh", Config.github_base_url)
+        elif link.startswith("gl"):
+            link = link.replace("gl", Config.gitlab_base_url)
+        return link
+
     def download(self, link: str) -> None:
-        if not link:
+        link = self._resolve_link(link)
+
+        if not self._check_link(link):
             raise ValueError(Message.Template.INVALID_LINK)
 
         template_name = link.split("/")[-1]
@@ -29,7 +44,7 @@ class TemplateCommand(CommandBase):
         self.logger.info(Message.Template.DOWNLOADED,
                          template_name=template_name)
 
-    def delete(self, template_name: str) -> None:
+    def remove(self, template_name: str) -> None:
         if not template_name:
             raise ValueError(Message.Template.INVALID_NAME)
 
