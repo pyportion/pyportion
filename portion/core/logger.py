@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from rich.console import Console
+from rich.jupyter import JupyterMixin
 from rich.theme import Theme
 
 from portion.models import cli_state
@@ -36,3 +37,6 @@ class Logger:
     def error(self, message: str, **kwargs: str) -> None:
         message = message.format(**kwargs)
         self.console.print(f"[error]Error: {message}[/error]")
+
+    def print(self, message: JupyterMixin) -> None:
+        self.console.print(message)

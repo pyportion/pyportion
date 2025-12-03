@@ -3,6 +3,9 @@ import shutil
 
 from git import Repo
 from platformdirs import user_data_dir
+from rich.console import Group
+from rich.panel import Panel
+from rich.table import Table
 from ruamel.yaml import YAML
 
 from portion.models import Config
@@ -94,3 +97,52 @@ class TemplateManager:
         yaml = YAML()
         with open(path, "w") as f:
             yaml.dump(config.model_dump(), f)
+
+    def get_template_info(self, template_config: TemplateConfig) -> Panel:
+        config = template_config.model_dump()
+
+        metadata = {k: v for k, v in config.items() if isinstance(v, str)}
+        source = config.get("source", {}) or {}
+        portions = config.get("portions", []) or []
+
+        def build_table(data) -> Table | None:
+            if not data:
+                return None
+
+            table = Table(
+                show_header=False,
+                box=None,
+                title_style="cyan bold"
+            )
+            for key, value in data.items():
+                table.add_row(
+                    f"[bold cyan]{key.capitalize()}[/]",
+                    str(value),
+                )
+            return table
+
+        metadata_table = build_table(metadata)
+        source_table = build_table(source)
+
+        portions_table = None
+        if portions:
+            portions_table = Table(
+                "[bold cyan]Portions:[/]",
+                show_header=True,
+                box=None)
+            for i, portion in enumerate(portions):
+                portion_name = portion.get("name", str(portion))
+                portions_table.add_row(f"{i+1}. {portion_name}")
+
+        group_items = [
+            table for table
+            in (metadata_table, source_table, portions_table)
+            if table
+        ]
+
+        group = Group(*group_items)
+        return Panel(
+            group,
+            title="[bold cyan]Template Info[/]",
+            border_style="cyan",
+        )

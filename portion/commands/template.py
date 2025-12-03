@@ -72,3 +72,8 @@ class TemplateCommand(CommandBase):
                          stralign="left",
                          numalign="center")
         self.logger.info(table)
+
+    def info(self, template_name: str) -> None:
+        config = self.template_manager.read_configuration(template_name)
+        panel = self.template_manager.get_template_info(config)
+        self.logger.print(panel)

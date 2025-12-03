@@ -22,3 +22,7 @@ class TemplateHandler(HandlerBase):
         @self.command.command(name="list")
         def list() -> None:
             template_command.list()
+
+        @self.command.command(name="info")
+        def info(template_name: str) -> None:
+            template_command.info(template_name)
