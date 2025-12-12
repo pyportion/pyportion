@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from rich.console import Console
 from rich.jupyter import JupyterMixin
+from rich.prompt import Confirm
 from rich.theme import Theme
 
 from portion.models import cli_state
@@ -37,6 +38,12 @@ class Logger:
     def error(self, message: str, **kwargs: str) -> None:
         message = message.format(**kwargs)
         self.console.print(f"[error]Error: {message}[/error]")
+
+    def prompt(self, message: str, **kwargs: str) -> bool:
+        message = message.format(**kwargs)
+        if Confirm.ask(message):
+            return True
+        return False
 
     def print(self, message: JupyterMixin) -> None:
         self.console.print(message)

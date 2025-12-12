@@ -14,8 +14,14 @@ class Portion:
                  verbose: bool = typer.Option(
                      False,
                      "--verbose", "-v",
-                     help="Enable verbose mode")) -> None:
+                     help="Enable verbose mode"),
+                 auto_confirm: bool = typer.Option(
+                     False,
+                     "--yes", "-y",
+                     help="Auto Confirm"),
+                 ) -> None:
         cli_state.verbose = verbose
+        cli_state.auto_confirm = auto_confirm
 
     def run(self) -> None:
         load_handlers(self.cli)

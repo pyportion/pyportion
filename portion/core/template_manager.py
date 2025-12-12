@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import shutil
 
@@ -13,6 +15,11 @@ from portion.models import TemplateConfig
 
 
 class TemplateManager:
+    def __new__(cls) -> TemplateManager:
+        if not hasattr(cls, "_instance"):
+            cls._instance = super(cls, TemplateManager).__new__(cls)
+        return cls._instance
+
     def __init__(self) -> None:
         self._pyportion_path = os.path.join(user_data_dir(),
                                             Config.portion_dir)

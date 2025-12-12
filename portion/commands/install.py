@@ -3,7 +3,7 @@ from pathlib import Path
 from portion.base import CommandBase
 from portion.core import ProjectManager
 from portion.core import TemplateManager
-from portion.core.message import Message
+from portion.models import Message
 
 
 class InstallCommand(CommandBase):

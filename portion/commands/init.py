@@ -1,8 +1,8 @@
 from pathlib import Path
 
 from portion.base import CommandBase
-from portion.core import Message
 from portion.core import ProjectManager
+from portion.models import Message
 
 
 class InitCommand(CommandBase):

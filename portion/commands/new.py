@@ -1,7 +1,7 @@
 from portion.base import CommandBase
-from portion.core import Message
 from portion.core import ProjectManager
 from portion.core import TemplateManager
+from portion.models import Message
 from portion.models import ProjectTemplate
 
 

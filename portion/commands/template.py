@@ -3,9 +3,9 @@ import re
 from tabulate import tabulate
 
 from portion.base import CommandBase
-from portion.core import Message
 from portion.core import TemplateManager
 from portion.models import Config
+from portion.models import Message
 
 
 class TemplateCommand(CommandBase):

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from pathlib import Path
 
@@ -5,9 +7,15 @@ from ruamel.yaml import YAML
 
 from portion.models import Config
 from portion.models import PortionConfig
+from portion.models import TemplateReplacements
 
 
 class ProjectManager:
+    def __new__(cls) -> ProjectManager:
+        if not hasattr(cls, "_instance"):
+            cls._instance = super(cls, ProjectManager).__new__(cls)
+        return cls._instance
+
     def is_project_exist(self, project_name: str) -> bool:
         return os.path.exists(project_name)
 
@@ -34,11 +42,11 @@ class ProjectManager:
 
     def replace_in_file(self,
                         file_path: list[str],
-                        replacements: dict[str, str]) -> None:
+                        replacements: list[TemplateReplacements]) -> None:
         with open(os.path.join(*file_path), "r+") as f:
             data = f.read()
-            for keyword, value in replacements.items():
-                data = data.replace(keyword, value)
+            for replace in replacements:
+                data = data.replace(replace.keyword, replace.value)
             f.seek(0)
             f.write(data)
             f.truncate()

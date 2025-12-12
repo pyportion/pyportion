@@ -1,7 +1,7 @@
 from importlib.metadata import version
 
 from portion.base import CommandBase
-from portion.core import Message
+from portion.models import Message
 
 
 class VersionCommand(CommandBase):
