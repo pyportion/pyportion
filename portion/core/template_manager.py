@@ -116,11 +116,11 @@ class TemplateManager:
             if not data:
                 return None
 
-            table = Table(
-                show_header=False,
-                box=None,
-                title_style="cyan bold"
-            )
+            table = Table(show_header=False,
+                          box=None,
+                          title_style="cyan bold",
+                          expand=False)
+
             for key, value in data.items():
                 table.add_row(
                     f"[bold cyan]{key.capitalize()}[/]",
@@ -133,10 +133,13 @@ class TemplateManager:
 
         portions_table = None
         if portions:
+
             portions_table = Table(
                 "[bold cyan]Portions:[/]",
                 show_header=True,
-                box=None)
+                box=None,
+                expand=False)
+
             for i, portion in enumerate(portions):
                 portion_name = portion.get("name", str(portion))
                 portions_table.add_row(f"{i+1}. {portion_name}")
@@ -152,4 +155,5 @@ class TemplateManager:
             group,
             title="[bold cyan]Template Info[/]",
             border_style="cyan",
+            expand=False
         )

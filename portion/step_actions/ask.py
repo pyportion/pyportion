@@ -13,9 +13,9 @@ class AskAction(ActionBase[TemplateAskStep]):
         super().__init__(step, project_template, memory, logger)
 
     def prepare(self) -> None:
-        return None
-
-    def apply(self) -> None:
         self.logger.info(self.step.question)
         answer = input()
         self.memory[self.step.variable] = answer
+
+    def apply(self) -> None:
+        return None
