@@ -1,0 +1,6 @@
+[run]
+source =
+    portion
+
+omit =
+    */__main__.py
