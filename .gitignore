@@ -7,3 +7,4 @@ htmlcov/
 coverage.xml
 .vscode
 .conform.json
+.venv
