@@ -2,8 +2,11 @@ import os
 from pathlib import PosixPath
 
 from portion.core.project_manager import ProjectManager
-from portion.models.project import ProjectTemplate
-from portion.models.template import TemplateReplacements
+from portion.models import ProjectTemplate
+from portion.models import PortionConfig
+from portion.models import TemplateReplacements
+
+from rich.panel import Panel
 
 
 pm = ProjectManager()
@@ -73,3 +76,16 @@ def test_update_configuration(tmp_path: PosixPath) -> None:
 
     updated_config = pm.read_configuration(path)
     assert updated_config.templates == [template]
+
+
+def test_get_project_info() -> None:
+    config = PortionConfig(
+        name="project",
+        templates=[
+            ProjectTemplate(name="temp1",
+                            link="https://github.com/pyportion/temp1.git",
+                            tag="v1.0.0")
+        ]
+    )
+    panel = pm.get_project_info(config, {})
+    assert isinstance(panel, Panel)
