@@ -8,3 +8,4 @@ coverage.xml
 .vscode
 .conform.json
 .venv
+.DS_Store

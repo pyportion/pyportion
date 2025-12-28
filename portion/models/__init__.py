@@ -3,6 +3,7 @@ from .message import Message
 from .project import PortionConfig
 from .project import ProjectTemplate
 from .state import cli_state
+from .template import OperationTypes
 from .template import TemplateAskStep
 from .template import TemplateConfig
 from .template import TemplateCopyStep
@@ -18,6 +19,7 @@ __all__ = [
     "ProjectTemplate",
     "cli_state",
     "Message",
+    "OperationTypes",
     "TemplateAskStep",
     "TemplateConfig",
     "TemplateCopyStep",

@@ -1,13 +1,14 @@
 import os
 from pathlib import PosixPath
 
-from portion.core.project_manager import ProjectManager
-from portion.models import ProjectTemplate
-from portion.models import PortionConfig
-from portion.models import TemplateReplacements
-
 from rich.panel import Panel
 
+from portion.core.project_manager import ProjectManager
+from portion.models import PortionConfig
+from portion.models import ProjectTemplate
+from portion.models import TemplateConfig
+from portion.models import TemplatePortion
+from portion.models import TemplateReplacements
 
 pm = ProjectManager()
 
@@ -84,8 +85,34 @@ def test_get_project_info() -> None:
         templates=[
             ProjectTemplate(name="temp1",
                             link="https://github.com/pyportion/temp1.git",
-                            tag="v1.0.0")
+                            tag="v1.0.0"),
+            ProjectTemplate(name="temp2",
+                            link="https://github.com/pyportion/temp2.git",
+                            tag="v1.0.0"),
+            ProjectTemplate(name="temp3",
+                            link="https://github.com/pyportion/temp3.git",
+                            tag="v1.0.0"),
         ]
     )
-    panel = pm.get_project_info(config, {})
+
+    portions = [TemplatePortion(name=f"portion{i}", steps=[])
+                for i in range(3)]
+
+    templates_dict = {"temp1": TemplateConfig(name="temp1",
+                                              version="1.0.0",
+                                              description="Test Template",
+                                              author="Author Name",
+                                              type="cli",
+                                              source=None,
+                                              portions=portions),
+                      "temp2": TemplateConfig(name="temp2",
+                                              version="1.0.0",
+                                              description="Another Template",
+                                              author="Author Name",
+                                              type="web",
+                                              source=None,
+                                              portions=[])
+                      }
+
+    panel = pm.get_project_info(config, templates_dict)
     assert isinstance(panel, Panel)
