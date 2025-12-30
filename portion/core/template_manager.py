@@ -78,7 +78,7 @@ class TemplateManager:
 
         path = os.path.join(self._pyportion_path,
                             template_name,
-                            ".portion",
+                            ".portions",
                             *portion_path)
 
         dest = os.path.join(*dest_path)
@@ -142,7 +142,7 @@ class TemplateManager:
 
             for i, portion in enumerate(portions):
                 portion_name = portion.get("name", str(portion))
-                portions_table.add_row(f"{i+1}. {portion_name}")
+                portions_table.add_row(f"{i + 1}. {portion_name}")
 
         group_items = [
             table for table
