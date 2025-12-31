@@ -9,7 +9,7 @@ from .template import TemplateConfig
 from .template import TemplateCopyStep
 from .template import TemplatePortion
 from .template import TemplatePortionStepsType
-from .template import TemplateReplacements
+from .template import TemplateReplacement
 from .template import TemplateReplaceStep
 from .template import TemplateSource
 
@@ -25,7 +25,7 @@ __all__ = [
     "TemplateCopyStep",
     "TemplatePortion",
     "TemplatePortionStepsType",
-    "TemplateReplacements",
+    "TemplateReplacement",
     "TemplateReplaceStep",
     "TemplateSource",
 ]

@@ -8,7 +8,7 @@ from portion.models import PortionConfig
 from portion.models import ProjectTemplate
 from portion.models import TemplateConfig
 from portion.models import TemplatePortion
-from portion.models import TemplateReplacements
+from portion.models import TemplateReplacement
 
 pm = ProjectManager()
 
@@ -42,9 +42,9 @@ def test_replace_in_file(tmp_path: PosixPath) -> None:
 
     pm.replace_in_file(
         [str(tmp_path), "test.txt"],
-        [TemplateReplacements(keyword="{name}",
-                              value="World",
-                              mode="uppercase")]
+        [TemplateReplacement(keyword="{name}",
+                             value="World",
+                             mode="uppercase")]
     )
 
     with open(file_path, "r") as f:

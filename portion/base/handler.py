@@ -8,4 +8,4 @@ class HandlerBase:
         self.register_commands()
 
     def register_commands(self) -> None:
-        raise NotImplementedError()
+        ...

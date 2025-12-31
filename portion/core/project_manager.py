@@ -13,7 +13,7 @@ from ruamel.yaml import YAML
 from portion.models import Config
 from portion.models import PortionConfig
 from portion.models import TemplateConfig
-from portion.models import TemplateReplacements
+from portion.models import TemplateReplacement
 
 
 class ProjectManager:
@@ -48,7 +48,7 @@ class ProjectManager:
 
     def replace_in_file(self,
                         file_path: list[str],
-                        replacements: list[TemplateReplacements]) -> None:
+                        replacements: list[TemplateReplacement]) -> None:
         with open(os.path.join(*file_path), "r+") as f:
             data = f.read()
             for replace in replacements:

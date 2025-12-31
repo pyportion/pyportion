@@ -19,7 +19,7 @@ class ActionBase(Generic[TStep]):
         self.logger = logger
 
     def prepare(self) -> None:
-        raise NotImplementedError()
+        ...
 
     def apply(self) -> None:
-        raise NotImplementedError()
+        ...

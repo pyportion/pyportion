@@ -1,4 +1,4 @@
-import pytest
+from pytest import MonkeyPatch
 
 from portion.core import Logger
 from portion.models import OperationTypes
@@ -20,7 +20,7 @@ ask_action = AskAction(
 )
 
 
-def test_ask_action_prepare(monkeypatch: pytest.MonkeyPatch):
+def test_ask_action_prepare(monkeypatch: MonkeyPatch):
     inputs = iter(["PyPortion"])
 
     def mock_input(prompt=""):

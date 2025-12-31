@@ -23,7 +23,7 @@ class TemplateCopyStep(BaseModel):
     to_path: list[str]
 
 
-class TemplateReplacements(BaseModel):
+class TemplateReplacement(BaseModel):
     keyword: str
     value: str
     mode: str
@@ -32,7 +32,7 @@ class TemplateReplacements(BaseModel):
 class TemplateReplaceStep(BaseModel):
     type: OperationTypes
     path: list[str]
-    replacements: list[TemplateReplacements]
+    replacements: list[TemplateReplacement]
 
 
 TemplatePortionStepsType = Union[TemplateAskStep,

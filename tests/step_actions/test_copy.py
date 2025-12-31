@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from portion.core import Logger
 from portion.models import OperationTypes
 from portion.models import ProjectTemplate
@@ -23,7 +25,7 @@ def test_copy_action_prepare():
     assert copy_action.step.to_path == ["dest_folder", "file.txt"]
 
 
-def test_copy_action_apply(tmp_path):
+def test_copy_action_apply(tmp_path: Path):
     source_dir = tmp_path / "source"
     source_dir.mkdir()
     source_file = source_dir / "file.txt"
