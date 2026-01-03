@@ -29,7 +29,7 @@ def test_logger_warn(capsys: pytest.CaptureFixture) -> None:
 def test_logger_error(capsys: pytest.CaptureFixture) -> None:
     logger.error("This is an error message.")
     captured = capsys.readouterr()
-    assert "Error: This is an error message." in captured.out
+    assert "This is an error message." in captured.out
 
 
 def test_logger_prompt(monkeypatch: pytest.MonkeyPatch) -> None:

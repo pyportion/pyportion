@@ -21,6 +21,7 @@ class Logger:
             "warn": "yellow",
             "error": "red",
         })
+
         self.console = Console(theme=theme)
 
     def pulse(self, message: str, **kwargs: str) -> None:
@@ -37,7 +38,7 @@ class Logger:
 
     def error(self, message: str, **kwargs: str) -> None:
         message = message.format(**kwargs)
-        self.console.print(f"[error]Error: {message}[/error]")
+        self.console.print(f"[error]{message}[/error]")
 
     def prompt(self, message: str, **kwargs: str) -> bool:
         message = message.format(**kwargs)

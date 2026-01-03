@@ -36,7 +36,6 @@ class TemplateCommand(CommandBase):
             return None
 
         self.template_manager.download_template(link)
-
         if self.template_manager.delete_if_not_template(template_name):
             self.logger.error(Message.Template.NOT_PORTION_TEMPLATE)
             return None
@@ -45,9 +44,6 @@ class TemplateCommand(CommandBase):
                          template_name=template_name)
 
     def remove(self, template_name: str) -> None:
-        if not template_name:
-            raise ValueError(Message.Template.INVALID_NAME)
-
         if self.template_manager.delete_template(template_name):
             self.logger.info(Message.Template.TEMPLATE_DELETED,
                              template_name=template_name)
@@ -74,6 +70,11 @@ class TemplateCommand(CommandBase):
         self.logger.info(table)
 
     def info(self, template_name: str) -> None:
+        if not self.template_manager.is_template_exists(template_name):
+            self.logger.error(Message.Template.TEMPLATE_NOT_EXIST,
+                              template_name=template_name)
+            return None
+
         config = self.template_manager.read_configuration(template_name)
         panel = self.template_manager.get_template_info(config)
         self.logger.print(panel)

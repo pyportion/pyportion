@@ -9,14 +9,6 @@ from portion.models.template import TemplateConfig
 from portion.models.template import TemplatePortion
 
 
-@pytest.fixture
-def mock_user_data_dir(tmp_path: PosixPath,
-                       monkeypatch: pytest.MonkeyPatch) -> PosixPath:
-    monkeypatch.setattr("portion.core.template_manager.user_data_dir",
-                        lambda: tmp_path)
-    return tmp_path
-
-
 def test_create_pyportion_dir(mock_user_data_dir: PosixPath) -> None:
     tm = TemplateManager()
     path = mock_user_data_dir / "pyportion"
