@@ -72,5 +72,5 @@ def test_info_command_displays_portions(mock_user_data_dir: PosixPath,
         assert result.exit_code == 0
         assert template_name in result.stdout
         assert "A test template" in result.stdout
-        assert "auth" in result.stdout
-        assert "database" in result.stdout
+        assert "feature1" in result.stdout
+        assert "feature2" in result.stdout

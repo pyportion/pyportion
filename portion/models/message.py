@@ -8,7 +8,7 @@ class Message:
 
         PROJECT_EXIST = "This project is already a portion project"
 
-        INITIALIZED = ("[bold cyan]{project_name}[/] project has "
+        INITIALIZED = ("[bold cyan]({project_name})[/] project has "
                        "been initialized successfully")
 
     @dataclass
@@ -22,7 +22,7 @@ class Message:
         TEMPLATE_ALREADY_ADDED = "The template is already added"
         TEMPLATE_INCOMPLETE = "The template is incompelete"
 
-        TEMPLATE_ADDED = ("[bold cyan]{template_name}[/] has "
+        TEMPLATE_ADDED = ("[bold cyan]({template_name})[/] has "
                           "been added successfully")
 
     @dataclass
@@ -63,7 +63,7 @@ class Message:
     class Remove:
         CHECKING_TEMPLATES = "Checking templates in current project"
         TEMPLATE_NOT_FOUND = "The template isn't exist in this project"
-        TEMPLATE_REMOVED = ("[bold cyan]{template_name}[/] has been "
+        TEMPLATE_REMOVED = ("([bold cyan]{template_name})[/] has been "
                             "removed successfully")
 
     @dataclass
