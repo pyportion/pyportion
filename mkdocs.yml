@@ -54,5 +54,5 @@ extra_javascript:
     - assets/js/termynal.js
 
 nav:
-    - Home: index.md
+    - Home: pages/index.md
     - Get Started: pages/get-started.md

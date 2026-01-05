@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyPortion Demo - Terminal Animation</title>
+    <style>
+        @font-face {
+            font-family: 'DejaVu Sans Mono';
+            src: url('assets/fonts/dejavu-sans-mono.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DejaVu Sans Mono", monospace;
+            background: #0a0a0a;
+            color: #eee;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #4CAF50;
+        }
+
+        .terminal-window {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button.close {
+            background: #ff5f56;
+        }
+
+        .terminal-button.minimize {
+            background: #ffbd2e;
+        }
+
+        .terminal-button.maximize {
+            background: #27c93f;
+        }
+
+        .terminal-title {
+            margin-left: 12px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            min-height: 400px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .prompt {
+            color: #4CAF50;
+            margin-right: 8px;
+        }
+
+        .command {
+            color: #fff;
+        }
+
+        .output {
+            color: #bbb;
+            margin-left: 0;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+
+        .info {
+            color: #2196F3;
+        }
+
+        .warning {
+            color: #FF9800;
+        }
+
+        .file-item {
+            color: #FFD700;
+            margin-left: 16px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #4CAF50;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+
+            0%,
+            49% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .file-tree {
+            margin: 20px 0;
+        }
+
+        .tree-item {
+            margin-left: 0;
+            color: #888;
+        }
+
+        .tree-file {
+            color: #fff;
+        }
+
+        .tree-new {
+            color: #4CAF50;
+            animation: highlight 1s ease-in-out;
+        }
+
+        @keyframes highlight {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+                color: #8FFF8F;
+            }
+        }
+
+        .replay-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid #4CAF50;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: #000;
+            font-family: "DejaVu Sans Mono", monospace;
+            transition: all 0.3s ease;
+        }
+
+        .replay-button:hover {
+            background: #45a049;
+            border-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-container">
+        <h1>PyPortion Build Command Demo</h1>
+
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-button close"></div>
+                <div class="terminal-button minimize"></div>
+                <div class="terminal-button maximize"></div>
+                <div class="terminal-title">terminal — pyportion-demo</div>
+            </div>
+            <div class="terminal-body" id="terminal">
+                <!-- Content will be dynamically added by JavaScript -->
+            </div>
+        </div>
+
+        <button class="replay-button hidden" id="replayBtn">▶ Replay Animation</button>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const replayBtn = document.getElementById('replayBtn');
+        let animationTimeout;
+        let allTimeouts = [];
+
+        const animationSteps = [
+            { type: 'prompt', delay: 500 },
+            { type: 'command', text: 'portion build service', delay: 100, typeSpeed: 80 },
+            { type: 'output', text: 'Reading configuration...', delay: 800, class: 'info' },
+            { type: 'output', text: 'Collecting all portions...', delay: 600, class: 'info' },
+            { type: 'output', text: 'Found portion: service', delay: 500, class: 'success' },
+            { type: 'output', text: '', delay: 300 },
+            { type: 'output', text: 'Running step: ask', delay: 400, class: 'info' },
+            { type: 'output', text: '? What is your service name? UserService', delay: 1000 },
+            { type: 'output', text: '', delay: 300 },
+            { type: 'output', text: 'Running step: copy', delay: 400, class: 'info' },
+            { type: 'output', text: '  Copying service template files...', delay: 600 },
+            { type: 'file', text: '  ✓ Created: src/services/user_service.py', delay: 400, class: 'success' },
+            { type: 'file', text: '  ✓ Created: src/services/__init__.py', delay: 400, class: 'success' },
+            { type: 'file', text: '  ✓ Created: tests/test_user_service.py', delay: 400, class: 'success' },
+            { type: 'output', text: '', delay: 300 },
+            { type: 'output', text: 'Running step: replace', delay: 400, class: 'info' },
+            { type: 'output', text: '  Updating configuration files...', delay: 600 },
+            { type: 'file', text: '  ✓ Updated: config/services.yml', delay: 400, class: 'success' },
+            { type: 'output', text: '', delay: 500 },
+            { type: 'output', text: '✨ Build completed successfully!', delay: 800, class: 'success' },
+            { type: 'output', text: '', delay: 300 },
+            { type: 'tree', delay: 600 },
+            { type: 'prompt', delay: 1000 }
+        ];
+
+        function createLine(content, className = '') {
+            const line = document.createElement('div');
+            line.className = `terminal-line ${className}`;
+            line.innerHTML = content;
+            return line;
+        }
+
+        function typeText(element, text, speed = 50) {
+            return new Promise((resolve) => {
+                let i = 0;
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                element.appendChild(cursor);
+
+                const interval = setInterval(() => {
+                    if (i < text.length) {
+                        const textNode = document.createTextNode(text[i]);
+                        element.insertBefore(textNode, cursor);
+                        i++;
+                    } else {
+                        clearInterval(interval);
+                        cursor.remove();
+                        resolve();
+                    }
+                }, speed);
+            });
+        }
+
+        function createFileTree() {
+            return `<div class="file-tree">
+<span class="output">Project structure:</span>
+<span class="tree-item">my-project/</span>
+<span class="tree-item">├── src/</span>
+<span class="tree-item">│   ├── services/</span>
+<span class="tree-item tree-new">│   │   ├── user_service.py</span>
+<span class="tree-item tree-new">│   │   └── __init__.py</span>
+<span class="tree-item">├── tests/</span>
+<span class="tree-item tree-new">│   └── test_user_service.py</span>
+<span class="tree-item">├── config/</span>
+<span class="tree-item tree-new">│   └── services.yml (updated)</span>
+<span class="tree-item">└── .pyportion.ymlyyyyyy</span>
+</div>`;
+        }
+
+        async function runAnimation() {
+            terminal.innerHTML = '';
+            let totalDelay = 0;
+
+            for (let i = 0; i < animationSteps.length; i++) {
+                const step = animationSteps[i];
+
+                const timeout = setTimeout(async () => {
+                    if (step.type === 'prompt') {
+                        const line = createLine('<span class="prompt">$ </span>');
+                        terminal.appendChild(line);
+                    } else if (step.type === 'command') {
+                        const lastLine = terminal.lastElementChild;
+                        const commandSpan = document.createElement('span');
+                        commandSpan.className = 'command';
+                        lastLine.appendChild(commandSpan);
+                        await typeText(commandSpan, step.text, step.typeSpeed);
+                    } else if (step.type === 'output') {
+                        const line = createLine(`<span class="${step.class || 'output'}">${step.text}</span>`);
+                        terminal.appendChild(line);
+                    } else if (step.type === 'file') {
+                        const line = createLine(`<span class="${step.class || 'file-item'}">${step.text}</span>`);
+                        terminal.appendChild(line);
+                    } else if (step.type === 'tree') {
+                        const treeDiv = document.createElement('div');
+                        treeDiv.className = 'terminal-line';
+                        treeDiv.innerHTML = createFileTree();
+                        terminal.appendChild(treeDiv);
+                    }
+
+                    terminal.scrollTop = terminal.scrollHeight;
+
+                    // Show replay button after animation completes
+                    if (i === animationSteps.length - 1) {
+                        setTimeout(() => {
+                            replayBtn.classList.remove('hidden');
+                        }, 1000);
+                    }
+                }, totalDelay);
+
+                allTimeouts.push(timeout);
+                totalDelay += step.delay;
+            }
+        }
+
+        function clearTimeouts() {
+            allTimeouts.forEach(timeout => clearTimeout(timeout));
+            allTimeouts = [];
+        }
+
+        replayBtn.addEventListener('click', () => {
+            replayBtn.classList.add('hidden');
+            clearTimeouts();
+            runAnimation();
+        });
+
+        runAnimation();
+    </script>
+</body>
+
+</html>
