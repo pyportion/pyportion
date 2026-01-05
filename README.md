@@ -1,4 +1,3 @@
-`🔴 This project is currently under rapid development and not yet ready for production use.`
 
 # PyPortion
 
