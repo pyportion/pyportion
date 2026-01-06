@@ -44,7 +44,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #4CAF50;
+    color: #47ba47;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -70,7 +70,7 @@ nav {
 }
 
 .dynamic-word {
-    color: #4CAF50;
+    color: #47ba47;
     position: relative;
     display: inline-block;
 }
@@ -79,7 +79,7 @@ nav {
     display: inline-block;
     width: 3px;
     height: 1em;
-    background: #4CAF50;
+    background: #47ba47;
     margin-left: 3px;
     animation: blink-cursor 1s infinite;
     vertical-align: middle;
@@ -108,10 +108,10 @@ nav {
 
 .cta-buttons {
     display: flex;
-    gap: 16px;
     justify-content: center;
-    margin-bottom: 32px;
     flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
 }
 
 .btn-primary,
@@ -124,17 +124,18 @@ nav {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: "DejaVu Sans Mono", sans-serif;
+    min-width: 210px;
 }
 
 .btn-primary {
-    background: #4CAF50;
+    background: #47ba47;
+    border-color: #47ba47;
     color: #000;
-    border-color: #4CAF50;
 }
 
 .btn-primary:hover {
-    background: #45a049;
-    border-color: #45a049;
+    background: #59f359;
+    border-color: #59f359;
     transform: translateY(-2px);
 }
 
@@ -179,7 +180,7 @@ nav {
 }
 
 .feature-card:hover {
-    border-color: #4CAF50;
+    border-color: #47ba47;
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(76, 175, 80, 0.2);
 }
@@ -233,7 +234,7 @@ nav {
 }
 
 .comparison-card.comparison-pyportion {
-    border-color: #4CAF50;
+    border-color: #47ba47;
 }
 
 .comparison-card h3 {
@@ -266,7 +267,7 @@ nav {
     content: "•";
     position: absolute;
     left: 8px;
-    color: #4CAF50;
+    color: #47ba47;
 }
 
 .demo-section {
@@ -349,7 +350,7 @@ nav {
 }
 
 .prompt {
-    color: #4CAF50;
+    color: #47ba47;
     margin-right: 8px;
 }
 
@@ -362,7 +363,7 @@ nav {
 }
 
 .success {
-    color: #4CAF50;
+    color: #47ba47;
 }
 
 .info {
@@ -381,7 +382,7 @@ nav {
     display: inline-block;
     width: 8px;
     height: 16px;
-    background: #4CAF50;
+    background: #47ba47;
     animation: blink 1s infinite;
     margin-left: 2px;
 }
@@ -413,7 +414,7 @@ nav {
 }
 
 .tree-new {
-    color: #4CAF50;
+    color: #47ba47;
     animation: highlight 1s ease-in-out;
 }
 
@@ -435,10 +436,10 @@ nav {
     padding: 6px 16px;
     font-size: 12px;
     font-weight: 600;
-    border: 1px solid #4CAF50;
+    border: 1px solid #47ba47;
     border-radius: 4px;
     cursor: pointer;
-    background: #4CAF50;
+    background: #47ba47;
     color: #000;
     font-family: "DejaVu Sans Mono", monospace;
     transition: all 0.3s ease;
@@ -538,7 +539,7 @@ nav {
 }
 
 .footer-column a:hover {
-    color: #4CAF50;
+    color: #47ba47;
 }
 
 .footer-bottom {

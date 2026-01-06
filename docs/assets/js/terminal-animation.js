@@ -3,11 +3,11 @@ const replayBtn = document.getElementById("replayBtn");
 let allTimeouts = [];
 
 const animationSteps = [
-    { type: "prompt", delay: 500 },
+    { type: "prompt", delay: 1000 },
     {
         type: "command",
         text: "portion build service",
-        delay: 100,
+        delay: 2500,
         typeSpeed: 80,
     },
     {
@@ -32,7 +32,12 @@ const animationSteps = [
     { type: "output", text: "Running step: ask", delay: 400, class: "info" },
     {
         type: "output",
-        text: "? What is your service name? UserService",
+        text: "What is your service name?",
+        delay: 1000,
+    },
+    {
+        type: "command",
+        text: " User",
         delay: 1000,
     },
     { type: "output", text: "", delay: 300 },
@@ -116,10 +121,10 @@ function createFileTree() {
 <span class="tree-item">my-project/</span>
 <span class="tree-item">├── src/</span>
 <span class="tree-item">│   ├── services/</span>
-<span class="tree-item tree-new">│   │   ├── user_service.py</span>
-<span class="tree-item tree-new">│   │   └── __init__.py</span>
+<span class="tree-item tree-new">│   │   ├── user_service.py (created)</span>
+<span class="tree-item tree-new">│   │   └── __init__.py (created)</span>
 <span class="tree-item">├── tests/</span>
-<span class="tree-item tree-new">│   └── test_user_service.py</span>
+<span class="tree-item tree-new">│   └── test_user_service.py (created)</span>
 <span class="tree-item">├── config/</span>
 <span class="tree-item tree-new">│   └── services.yml (updated)</span>
 <span class="tree-item">└── .pyportion.yml</span>
