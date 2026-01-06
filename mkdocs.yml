@@ -5,6 +5,7 @@ site_url: https://docs.pyportion.com/
 repo_name: pyportion
 theme:
     name: material
+    favicon: ''
     features:
         - content.code.annotate
         - content.code.copy
@@ -25,18 +26,9 @@ theme:
         - search.suggest
 
     palette:
-        - media: "(prefers-color-scheme: dark)"
-          scheme: slate
-          toggle:
-              icon: material/brightness-7
-              name: Switch to system preference
-
-        - media: "(prefers-color-scheme: light)"
-          scheme: default
-          primary: slate
-          toggle:
-              icon: material/brightness-2
-              name: Switch to dark mode
+        - scheme: slate
+          primary: green
+          accent: green
 
 markdown_extensions:
     - pymdownx.highlight:
@@ -48,6 +40,7 @@ markdown_extensions:
     - pymdownx.superfences
 
 extra_css:
+    - assets/css/custom.css
     - assets/css/termynal.css
 
 extra_javascript:
