@@ -1,7 +1,6 @@
-<img width="1920" height="1080" alt="pyportion" src="https://github.com/user-attachments/assets/d12c479f-5525-4043-8d3f-fe331481f363" />
+<img width="1920" height="512" alt="pyportion" src="https://github.com/user-attachments/assets/4a4ef100-f423-40cc-97b2-682e531b5473" />
 
 
-<p align="center">
 <em>Kickstart new Python projects instantly and manage existing ones effortlessly</em>
 </p>
 
