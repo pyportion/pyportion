@@ -5,12 +5,9 @@ PyPortion is a lightweight and developer-friendly Python CLI tool that **helps y
 
 ## Key Features
 
-- 🚀 **Quick start** – Generate new projects from starter templates
-- 🔄 **Consistency** – Keeps your project structure up to standard
-- 📦 **Scalable structure** – Enforces a clean, maintainable architecture
-- 🛠️ **Project management** – Easily maintain and organize existing projects
-- 🧩 **Customizable** -  Fully customizable templates
-- 👨‍💻 **Developer-friendly** - Simple and intuitive commands
+- 🚀 **Quick Start** – Scaffold new projects in seconds with zero setup time
+- 🛠️ **Easy Management** – Maintain and organize your projects effortlessly with built-in templates
+- 📦 **Clean & Consistent** – Scalable architecture that stays clean, maintainable, and up to standard as you grow
 
 ## Why PyPortion?
 

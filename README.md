@@ -3,12 +3,19 @@
 
 PyPortion CLI helps you kickstart new projects and manage existing ones with ease. It streamlines project setup, enforces a clean and scalable structure, and lets you focus on delivering high-quality applications
 
+🌐 **[pyportion.com](https://pyportion.com)**
+
 ## Features
 
-- 🚀 **Quick start** – Scaffold new projects in seconds
-- 🛠️ **Project management** – Easily maintain and organize existing projects
-- 📦 **Scalable structure** – Enforces a clean, maintainable architecture
-- 🔄 **Consistency** – Keeps your project structure up to standard
+- 🚀 **Quick Start** – Scaffold new projects in seconds with zero setup time
+- 🛠️ **Easy Management** – Maintain and organize your projects effortlessly with built-in templates
+- 📦 **Clean & Consistent** – Scalable architecture that stays clean, maintainable, and up to standard as you grow
+
+## Get Started
+
+Ready to streamline your Python projects? Our comprehensive guide walks you through installation, creating your first project, and exploring all the features PyPortion has to offer.
+
+👉 **[Read the Getting Started Guide](https://pyportion.com/pages/get-started)**
 
 ## Contributing
 We’re actively building pyportion — and we’d love your help!
