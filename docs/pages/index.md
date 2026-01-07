@@ -18,6 +18,6 @@ PyPortion is a lightweight and developer-friendly Python CLI tool that **helps y
 
 ## Community / Contribute
 
-* 🐞 [Report Bugs](https://github.com/pyportion/pyportion/issues)
-* 💡 [Suggest Features](https://github.com/pyportion/pyportion/discussions)
-* 🔧 [Contribution Guide](https://github.com/pyportion/pyportion/blob/main/.github/CONTRIBUTING.md)
+* 🐞 [Report Bugs](https://github.com/atharabia/pyportion/issues)
+* 💡 [Suggest Features](https://github.com/atharabia/pyportion/discussions)
+* 🔧 [Contribution Guide](https://github.com/atharabia/pyportion/blob/main/.github/CONTRIBUTING.md)

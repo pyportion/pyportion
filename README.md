@@ -33,9 +33,9 @@ ___
 
 ## Contributing
 We’re actively building pyportion — and we’d love your help!
-* 🐞 [Report Bugs](https://github.com/pyportion/pyportion/issues)
-* 💡 [Suggest Features](https://github.com/pyportion/pyportion/discussions)
-* 🔧 [Contribute Guide](https://github.com/pyportion/pyportion/blob/main/.github/CONTRIBUTING.md)
+* 🐞 [Report Bugs](https://github.com/atharabia/pyportion/issues)
+* 💡 [Suggest Features](https://github.com/atharabia/pyportion/discussions)
+* 🔧 [Contribute Guide](https://github.com/atharabia/pyportion/blob/main/.github/CONTRIBUTING.md)
 
 ## Show your support
 Please star 🌟 the repository If you find this project interesting.

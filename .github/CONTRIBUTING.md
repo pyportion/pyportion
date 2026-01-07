@@ -2,8 +2,8 @@
 Thank you for your interest in contributing to pyportion 🎉
 
 ## Types of Contributions
-* 🐛 **Reporting bugs** – Found something broken? [Open an issue](https://github.com/pyportion/pyportion/issues)
-* 💡 **Suggesting features** – Have an idea? [Start a discussion](https://github.com/pyportion/pyportion/discussions)
+* 🐛 **Reporting bugs** – Found something broken? [Open an issue](https://github.com/atharabia/pyportion/issues)
+* 💡 **Suggesting features** – Have an idea? [Start a discussion](https://github.com/atharabia/pyportion/discussions)
 * 🧪 **Testing new releases** – Try the latest versions and share feedback
 * 🧱 **Improving documentation** – Help others understand pyportion
 * 🧰 **Contributing code** – Fix bugs or add new features
@@ -64,4 +64,4 @@ Reviewers focus on:
 * Quality and clarity of commit messages
 
 ## 💬 Need Help?
-If you’re unsure about something, feel free to open a [discussion](https://github.com/pyportion/pyportion/discussions).
+If you’re unsure about something, feel free to open a [discussion](https://github.com/atharabia/pyportion/discussions).

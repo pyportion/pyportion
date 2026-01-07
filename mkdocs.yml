@@ -1,7 +1,7 @@
 site_name: PyPortion Docs
 site_description: CLI tool documentation
-repo_url: https://github.com/pyportion/pyportion
-site_url: https://docs.pyportion.com/
+repo_url: https://github.com/atharabia/pyportion
+site_url: https://pyportion.com/
 repo_name: pyportion
 theme:
     name: material
