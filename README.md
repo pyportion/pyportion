@@ -1,9 +1,28 @@
+<img width="1920" height="1080" alt="pyportion" src="https://github.com/user-attachments/assets/d12c479f-5525-4043-8d3f-fe331481f363" />
 
-# PyPortion
 
-PyPortion CLI helps you kickstart new projects and manage existing ones with ease. It streamlines project setup, enforces a clean and scalable structure, and lets you focus on delivering high-quality applications
+<p align="center">
+<em>Kickstart new Python projects instantly and manage existing ones effortlessly</em>
+</p>
 
-🌐 **[pyportion.com](https://pyportion.com)**
+
+<p align="center">
+  <img src="https://img.shields.io/badge/coverage-100%25-brightgreen">
+  <img src="https://img.shields.io/pypi/dm/PyPortion">
+  <a href="https://github.com/Atharabia/pyportion/">
+    <img src="https://img.shields.io/badge/github-repo-blue?style=flat&logo=github&link=https%3A%2F%2Fgithub.com%2FAtharabia%2Fpyportion%2F">
+  </a>
+  <a href="https://github.com/sponsors/murtadapy">
+    <img src="https://img.shields.io/github/sponsors/murtadapy">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://pyportion.com">pyportion.com</a>
+</p>
+
+___
+
 
 ## Features
 
@@ -15,7 +34,7 @@ PyPortion CLI helps you kickstart new projects and manage existing ones with eas
 
 Ready to streamline your Python projects? Our comprehensive guide walks you through installation, creating your first project, and exploring all the features PyPortion has to offer.
 
-👉 **[Read the Getting Started Guide](https://pyportion.com/pages/get-started)**
+**[Read the Getting Started Guide](https://pyportion.com/pages/get-started)**
 
 ## Contributing
 We’re actively building pyportion — and we’d love your help!
