@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <a href="https://pyportion.com">pyportion.com</a>
+  🌐 <a href="https://pyportion.com">Website</a> 📰 <a href="https://pyportion.com/pages">Docs</a>
 </p>
 
 ___
@@ -31,12 +31,6 @@ ___
 - 🛠️ **Easy Management** – Maintain and organize your projects effortlessly with built-in templates
 - 📦 **Clean & Consistent** – Scalable architecture that stays clean, maintainable, and up to standard as you grow
 
-## Get Started
-
-Ready to streamline your Python projects? Our comprehensive guide walks you through installation, creating your first project, and exploring all the features PyPortion has to offer.
-
-**[Read the Getting Started Guide](https://pyportion.com/pages/get-started)**
-
 ## Contributing
 We’re actively building pyportion — and we’d love your help!
 * 🐞 [Report Bugs](https://github.com/pyportion/pyportion/issues)
@@ -44,4 +38,4 @@ We’re actively building pyportion — and we’d love your help!
 * 🔧 [Contribute Guide](https://github.com/pyportion/pyportion/blob/main/.github/CONTRIBUTING.md)
 
 ## Show your support
-If you find this project interesting, please star the repository 🌟
+Please star 🌟 the repository If you find this project interesting.
