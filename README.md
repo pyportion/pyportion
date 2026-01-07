@@ -1,4 +1,5 @@
-<img width="1920" height="1080" alt="pyportion" src="https://github.com/user-attachments/assets/d12c479f-5525-4043-8d3f-fe331481f363" />
+
+<img width="1920" height="512" alt="pyportion" src="https://github.com/user-attachments/assets/b5d10d1f-b124-4324-a7cb-0382b88e0680" />
 
 
 <p align="center">
