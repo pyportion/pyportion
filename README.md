@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  🌐 <a href="https://pyportion.com">Website</a> 📰 <a href="https://pyportion.com/pages">Docs</a>
+  🌐 <a href="https://pyportion.com">Website</a> - 📰 <a href="https://pyportion.com/pages">Docs</a>
 </p>
 
 ___
