@@ -222,6 +222,15 @@ if (document.currentScript.hasAttribute("data-termynal-container")) {
     containers.split("|").forEach((container) => new Termynal(container));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// Initialize termynal on page load
+function initTermynal() {
   document.querySelectorAll(".termynal").forEach(e => new Termynal(e));
+}
+
+// Initialize on DOMContentLoaded (for direct page loads/refreshes)
+document.addEventListener("DOMContentLoaded", initTermynal);
+
+// Initialize on navigation for MkDocs Material instant loading
+document$.subscribe(function() {
+  initTermynal();
 });
