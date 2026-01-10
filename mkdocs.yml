@@ -5,7 +5,7 @@ site_url: https://pyportion.com/
 repo_name: pyportion
 theme:
     name: material
-    favicon: ''
+    favicon: ""
     features:
         - content.code.annotate
         - content.code.copy
@@ -49,3 +49,4 @@ extra_javascript:
 nav:
     - Home: pages/index.md
     - Get Started: pages/get-started.md
+    - Contributing: pages/contributing.md
