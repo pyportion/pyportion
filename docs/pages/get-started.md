@@ -5,10 +5,7 @@ This guide will help you to get started in PyPortion, run your first commands an
 ## Installation
 
 <div class="termynal" data-termynal>
-    <span data-ty="input">pip install pyportion</span>
-    <span data-ty>Collecting pyportion</span>
-    <span data-ty="progress"></span>
-    <span data-ty>Successfully Installed PyPortion</span>
+    <span data-ty>pip install pyportion</span>
 </div>
 
 ## Create your first project
