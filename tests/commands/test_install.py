@@ -12,7 +12,7 @@ from tests.utils import strip_ansi
 def test_install_command_no_project(app: Portion) -> None:
     runner = CliRunner()
     with runner.isolated_filesystem():
-        result = runner.invoke(app.cli, ["install"])
+        result = runner.invoke(app.cli, ["template", "download"])
         assert result.exit_code == 1
 
 
@@ -22,7 +22,7 @@ def test_install_command_project_without_templates(app: Portion) -> None:
         project_name = "test-project"
         runner.invoke(app.cli, ["init", project_name])
 
-        result = runner.invoke(app.cli, ["install"])
+        result = runner.invoke(app.cli, ["template", "download"])
         assert result.exit_code == 0
 
 
@@ -41,7 +41,7 @@ def test_install_command_with_one_template(mock_user_data_dir: PosixPath,
         with patch(func) as mock_download:
             mock_download.return_value = None
 
-            result = runner.invoke(app.cli, ["install"])
+            result = runner.invoke(app.cli, ["template", "download"])
             assert result.exit_code == 0
 
             message = f"{template_name} is successfully downloaded"
@@ -70,7 +70,7 @@ def test_install_command_with_multiple_templates(mock_user_data_dir: PosixPath,
 
         with patch(func) as mock_download:
             mock_download.return_value = None
-            result = runner.invoke(app.cli, ["install"])
+            result = runner.invoke(app.cli, ["template", "download"])
             assert result.exit_code == 0
             assert mock_download.call_count == 3
 
@@ -90,7 +90,7 @@ def test_install_command_download_failure(mock_user_data_dir: PosixPath,
         with patch(func) as mock_download:
             mock_download.side_effect = Exception()
 
-            result = runner.invoke(app.cli, ["install"])
+            result = runner.invoke(app.cli, ["template", "download"])
             assert result.exit_code == 0
 
             message = f"Could not donwload {template_name}"

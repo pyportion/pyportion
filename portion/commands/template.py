@@ -1,8 +1,10 @@
 import re
+from pathlib import Path
 
 from tabulate import tabulate
 
 from portion.base import CommandBase
+from portion.core import ProjectManager
 from portion.core import TemplateManager
 from portion.models import Config
 from portion.models import Message
@@ -12,6 +14,7 @@ class TemplateCommand(CommandBase):
     def __init__(self) -> None:
         super().__init__()
         self.template_manager = TemplateManager()
+        self.project_manager = ProjectManager()
         self.template_manager.create_pyportion_dir()
 
     def _check_link(self, link: str) -> bool:
@@ -24,7 +27,11 @@ class TemplateCommand(CommandBase):
             link = link.replace("gl", Config.gitlab_base_url)
         return link
 
-    def download(self, link: str) -> None:
+    def download(self, link: str | None = None) -> None:
+        if link is None:
+            self._download_all_from_config()
+            return None
+
         link = self._resolve_link(link)
 
         if not self._check_link(link):
@@ -42,6 +49,27 @@ class TemplateCommand(CommandBase):
 
         self.logger.info(Message.Template.DOWNLOADED,
                          template_name=template_name)
+
+    def _download_all_from_config(self) -> None:
+        path = Path.cwd()
+
+        self.logger.pulse(Message.Install.READING_CONFIGURATION)
+        config = self.project_manager.read_configuration(path)
+
+        for template in config.templates:
+            try:
+                self.logger.pulse(Message.Install.DOWNLOADING_TEMPALTE,
+                                  template_name=template.name,
+                                  template_link=template.link)
+
+                self.template_manager.download_template(template.link)
+
+                self.logger.info(Message.Install.DOWNLOADED,
+                                 template_name=template.name)
+
+            except Exception:
+                self.logger.error(Message.Install.COULD_NOT_DOWNLOAD,
+                                  template_name=template.name)
 
     def remove(self, template_name: str) -> None:
         if self.template_manager.delete_template(template_name):

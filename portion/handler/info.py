@@ -11,6 +11,8 @@ class InfoHandler(HandlerBase):
     def register_commands(self) -> None:
         info_command = InfoCommand()
 
-        @self.command.command()
+        @self.command.command(
+            help="Display project information"
+        )
         def info() -> None:
             info_command.info()

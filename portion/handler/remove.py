@@ -1,3 +1,5 @@
+from typing import Annotated
+
 import typer
 
 from portion.base import HandlerBase
@@ -11,6 +13,14 @@ class RemoveHandler(HandlerBase):
     def register_commands(self) -> None:
         remove_command = RemoveCommand()
 
-        @self.command.command()
-        def remove(template_name: str) -> None:
+        @self.command.command(
+            help="Remove a template from the project",
+            no_args_is_help=True
+        )
+        def remove(
+            template_name: Annotated[
+                str,
+                typer.Argument(help="Name of the template to remove")
+            ]
+        ) -> None:
             remove_command.remove(template_name)

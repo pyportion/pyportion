@@ -1,3 +1,5 @@
+from typing import Annotated
+
 import typer
 
 from portion.base import HandlerBase
@@ -11,18 +13,49 @@ class TemplateHandler(HandlerBase):
     def register_commands(self) -> None:
         template_command = TemplateCommand()
 
-        @self.command.command(name="download")
-        def download(link: str) -> None:
+        @self.command.command(
+            name="download",
+            help="Download templates by link or project config",
+        )
+        def download(
+            link: Annotated[
+                str | None,
+                typer.Argument(
+                    help="Link to the template to download"
+                )
+            ] = None
+        ) -> None:
             template_command.download(link)
 
-        @self.command.command(name="remove")
-        def remove(template_name: str) -> None:
+        @self.command.command(
+            name="remove",
+            help="Remove a template",
+            no_args_is_help=True
+        )
+        def remove(
+            template_name: Annotated[
+                str,
+                typer.Argument(help="Name of the template to remove")
+            ]
+        ) -> None:
             template_command.remove(template_name)
 
-        @self.command.command(name="list")
+        @self.command.command(
+            name="list",
+            help="List all available templates"
+        )
         def list() -> None:
             template_command.list()
 
-        @self.command.command(name="info")
-        def info(template_name: str) -> None:
+        @self.command.command(
+            name="info",
+            help="Display information about a template",
+            no_args_is_help=True
+        )
+        def info(
+            template_name: Annotated[
+                str,
+                typer.Argument(help="Name of the template")
+            ]
+        ) -> None:
             template_command.info(template_name)

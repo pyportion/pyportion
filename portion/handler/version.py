@@ -12,6 +12,9 @@ class VersionHandler(HandlerBase):
     def register_commands(self) -> None:
         version_command = VersionCommand()
 
-        @self.command.command(name="version")
+        @self.command.command(
+            name="version",
+            help="Display version information"
+        )
         def version() -> None:
             version_command.version()

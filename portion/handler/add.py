@@ -1,3 +1,5 @@
+from typing import Annotated
+
 import typer
 
 from portion.base import HandlerBase
@@ -11,6 +13,14 @@ class AddHandler(HandlerBase):
     def register_commands(self) -> None:
         add_command = AddCommand()
 
-        @self.command.command()
-        def add(template_name: str) -> None:
+        @self.command.command(
+            help="Add a template to the project",
+            no_args_is_help=True
+        )
+        def add(
+            template_name: Annotated[
+                str,
+                typer.Argument(help="Name of the template to add")
+            ]
+        ) -> None:
             add_command.add(template_name)

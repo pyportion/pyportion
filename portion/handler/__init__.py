@@ -4,7 +4,6 @@ from .add import AddHandler
 from .build import BuildHandler
 from .info import InfoHandler
 from .init import InitHandler
-from .install import InstallHandler
 from .new import NewHandler
 from .remove import RemoveHandler
 from .template import TemplateHandler
@@ -17,7 +16,6 @@ def load_handlers(app: Typer) -> None:
         BuildHandler,
         InfoHandler,
         InitHandler,
-        InstallHandler,
         NewHandler,
         RemoveHandler,
         TemplateHandler,

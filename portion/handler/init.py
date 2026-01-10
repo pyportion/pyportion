@@ -1,3 +1,5 @@
+from typing import Annotated
+
 import typer
 
 from portion.base import HandlerBase
@@ -11,6 +13,14 @@ class InitHandler(HandlerBase):
     def register_commands(self) -> None:
         init_command = InitCommand()
 
-        @self.command.command()
-        def init(project_name: str) -> None:
+        @self.command.command(
+            help="Make current project a PyPortion project",
+            no_args_is_help=True
+        )
+        def init(
+            project_name: Annotated[
+                str,
+                typer.Argument(help="Name of the project")
+            ]
+        ) -> None:
             init_command.init(project_name)
