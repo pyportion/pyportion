@@ -1,5 +1,5 @@
 <p align="center">
-<img width="150" height="150" alt="pyportion" src="https://github.com/user-attachments/assets/54d4efbe-c680-4a16-8296-006428e00f92" />
+<img width="150" height="150" alt="Atharabia Icons" src="https://github.com/user-attachments/assets/41922a5c-c352-43ff-8056-79b7660c2b0b" />
 </p>
 
 <h1 align="center">PyPortion</h1>
