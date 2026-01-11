@@ -30,6 +30,9 @@ nav {
 
 .nav-brand {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .nav-links {

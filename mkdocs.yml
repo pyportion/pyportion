@@ -5,7 +5,8 @@ site_url: https://pyportion.com/
 repo_name: pyportion
 theme:
     name: material
-    favicon: ""
+    favicon: assets/images/favicon.png
+    logo: assets/images/logo.png
     features:
         - content.code.annotate
         - content.code.copy
