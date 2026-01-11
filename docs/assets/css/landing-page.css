@@ -557,6 +557,10 @@ nav {
 }
 
 @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
     .hero {
         margin-top: 60px;
     }
