@@ -1,6 +1,8 @@
+<p align="center">
+<img width="150" height="150" alt="Atharabia Icons" src="https://github.com/user-attachments/assets/41922a5c-c352-43ff-8056-79b7660c2b0b" />
+</p>
 
-<img width="1920" height="512" alt="pyportion" src="https://github.com/user-attachments/assets/b5d10d1f-b124-4324-a7cb-0382b88e0680" />
-
+<h1 align="center">PyPortion</h1>
 
 <p align="center">
 <em>Kickstart new Python projects instantly and manage existing ones effortlessly</em>
@@ -19,7 +21,7 @@
 </p>
 
 <p align="center">
-  🌐 <a href="https://pyportion.com">Website</a> - 📰 <a href="https://pyportion.com/pages">Docs</a>
+  🌐 <a href="https://pyportion.com">Website</a> · 📰 <a href="https://pyportion.com/pages">Docs</a>
 </p>
 
 ___
