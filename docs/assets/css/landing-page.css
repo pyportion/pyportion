@@ -679,7 +679,7 @@ nav {
     }
 
     .hero h1 {
-        font-size: 32px;
+        font-size: 24px;
     }
 
     .hero-subheadline {
@@ -695,6 +695,9 @@ nav {
     .btn-secondary {
         width: 100%;
         max-width: 300px;
+        padding: 10px 24px;
+        font-size: 14px;
+        min-width: 180px;
     }
 
     .features-section h2,
