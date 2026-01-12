@@ -101,18 +101,24 @@
 
     <section id="demo" class="demo-section">
         <h2>See It In Action</h2>
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-controls">
-                    <div class="terminal-button close"></div>
-                    <div class="terminal-button minimize"></div>
-                    <div class="terminal-button maximize"></div>
+        <div class="demo-container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="terminal-button close"></div>
+                        <div class="terminal-button minimize"></div>
+                        <div class="terminal-button maximize"></div>
+                    </div>
+                    <div class="terminal-title">pyportion-demo</div>
+                    <button class="replay-button" id="replayBtn">▶ Replay</button>
                 </div>
-                <div class="terminal-title">pyportion-demo</div>
-                <button class="replay-button" id="replayBtn">▶ Replay</button>
+                <div class="terminal-body" id="terminal">
+                </div>
             </div>
-            <div class="terminal-body" id="terminal">
-                <!-- Content will be dynamically added by JavaScript -->
+            <div class="explorer-panel">
+                <div class="explorer-panel-header">FILE EXPLORER</div>
+                <div class="explorer-panel-body" id="explorerPanel">
+                </div>
             </div>
         </div>
     </section>
