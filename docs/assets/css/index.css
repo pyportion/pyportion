@@ -72,6 +72,10 @@ nav {
     color: #fff;
 }
 
+.highlight {
+    color: #47ba47;
+}
+
 .dynamic-word {
     color: #47ba47;
     position: relative;
@@ -305,6 +309,8 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    height: 20px;
+    border-bottom: 1px solid #3d3d3d;
 }
 
 .terminal-controls {
@@ -335,6 +341,7 @@ nav {
     margin-left: 12px;
     font-size: 13px;
     color: #999;
+    font-weight: 600;
 }
 
 .terminal-body {
@@ -362,6 +369,9 @@ nav {
     font-size: 13px;
     color: #999;
     font-weight: 600;
+    height: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .explorer-panel-body {

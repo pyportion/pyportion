@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PyPortion - CLI Tool</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/landing-page.css">
+    <link rel="stylesheet" href="assets/css/index.css">
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo.png">
@@ -20,13 +20,12 @@
         </div>
 
         <div class="nav-links">
+            <a href="#demo">How</a>
             <a href="#why">Why</a>
-            <a href="#features">Features</a>
-            <a href="#demo">Demo</a>
+            <a href="#features">What</a>
             <a href="pages">Docs</a>
         </div>
     </nav>
-
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-statement">Build Projects <span id="dynamic-word" class="dynamic-word">Faster_</span></h1>
@@ -44,8 +43,33 @@
         </div>
     </section>
 
+    <section id="demo" class="demo-section">
+        <h2><span class="highlight">How</span> It Works</h2>
+        <div class="demo-container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="terminal-button close"></div>
+                        <div class="terminal-button minimize"></div>
+                        <div class="terminal-button maximize"></div>
+                    </div>
+                    <div class="terminal-title">Terminal</div>
+                    <button class="replay-button" id="replayBtn">▶ Replay</button>
+                </div>
+                <div class="terminal-body" id="terminal">
+                </div>
+            </div>
+            <div class="explorer-panel">
+                <div class="explorer-panel-header">File Explorer</div>
+                <div class="explorer-panel-body" id="explorerPanel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section id="why" class="comparison-section">
-        <h2>Why PyPortion?</h2>
+        <h2><span class="highlight">Why</span> PyPortion?</h2>
         <div class="comparison-grid">
             <div class="comparison-card comparison-manual">
                 <h3>❌ Manual Setup</h3>
@@ -53,7 +77,6 @@
                     <li>Hours wasted on repetitive setup</li>
                     <li>Fragile and error-prone structure</li>
                     <li>Different layout for every project</li>
-                    <li>Essential files often missing</li>
                 </ul>
             </div>
             <div class="comparison-card comparison-pyportion">
@@ -62,14 +85,13 @@
                     <li>Start a new project in seconds</li>
                     <li>Production-ready proven structure</li>
                     <li>Consistent across all projects</li>
-                    <li>Everything included from day</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="features" class="features-section">
-        <h2>What You Get</h2>
+        <h2><span class="highlight">What</span> You Get</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <span class="feature-icon">🚀</span>
@@ -97,35 +119,9 @@
         </div>
     </section>
 
-
-
-    <section id="demo" class="demo-section">
-        <h2>See It In Action</h2>
-        <div class="demo-container">
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <div class="terminal-controls">
-                        <div class="terminal-button close"></div>
-                        <div class="terminal-button minimize"></div>
-                        <div class="terminal-button maximize"></div>
-                    </div>
-                    <div class="terminal-title">pyportion-demo</div>
-                    <button class="replay-button" id="replayBtn">▶ Replay</button>
-                </div>
-                <div class="terminal-body" id="terminal">
-                </div>
-            </div>
-            <div class="explorer-panel">
-                <div class="explorer-panel-header">FILE EXPLORER</div>
-                <div class="explorer-panel-body" id="explorerPanel">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="cta-section">
         <h2>Ready to get started?</h2>
-        <p>Join developers who are building faster and cleaner with PyPortion</p>
+        <p>Join developers who are building projects faster and cleaner with PyPortion</p>
         <a href="pages">
             <button class="btn-primary">Start Creating Projects</button>
         </a>
