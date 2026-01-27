@@ -1,5 +1,6 @@
-# Contributing to pyportion
-Thank you for your interest in contributing to pyportion 🎉
+# Contributing to PyPortion
+
+Thank you for your interest in contributing to PyPortion.
 
 ## Types of Contributions
 * 🐛 **Reporting bugs** – Found something broken? [Open an issue](https://github.com/atharabia/pyportion/issues)
@@ -32,10 +33,11 @@ poetry install
 
 5. **Start Development**
 
-You can start the development process
+Make your changes to the codebase. Ensure your code follows the project's coding standards and includes appropriate tests.
 
-6. **Install Pre-Commit**
-One you are done from the development process, run the following:
+6. **Install Pre-Commit Hooks**
+
+Once you have completed your changes, install the pre-commit hooks:
 ```bash
 poetry run pre-commit install
 ```
@@ -43,18 +45,18 @@ poetry run pre-commit install
 7. **Commit and Push your changes**
 Use git to commit and push your changes to open a pull request
 
-# Pre-Commit
+## Pre-Commit Hooks
 
-Pre-Commit hooks will work locally upon comitting and do the following if needed:
+Pre-commit hooks run automatically when you commit changes and perform the following checks:
 * Format code
 * Lint code
 * Type check
 * Sort imports
 * Run test cases
 
-Note that it might automatically fix the files you committed to match our coding style, so you’ll need to add and commit those changes again before pushing.
+**Note:** Pre-commit hooks may automatically modify files to match the project's coding style. If this occurs, stage and commit the changes again before pushing.
 
-## 🔄 Pull Request Review
+## Pull Request Review
 All pull requests go through an automatic review via GitHub Actions, followed by a manual review.
 
 Reviewers focus on:
@@ -63,5 +65,6 @@ Reviewers focus on:
 * Test coverage
 * Quality and clarity of commit messages
 
-## 💬 Need Help?
-If you’re unsure about something, feel free to open a [discussion](https://github.com/atharabia/pyportion/discussions).
+## Need Help?
+
+If you have questions or need clarification, open a [discussion](https://github.com/atharabia/pyportion/discussions) on GitHub.

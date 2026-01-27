@@ -50,6 +50,6 @@ extra_javascript:
 nav:
     - Home: pages/index.md
     - User Guide:
-        - Introduction: pages/user-guide/introduction.md
-        - Get Started: pages/user-guide/get-started.md
+        - Introduction: pages/user-guide/1-introduction.md
+        - Get Started: pages/user-guide/2-get-started.md
     - Contributing: pages/contributing.md
